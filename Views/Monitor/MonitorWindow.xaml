@@ -1,0 +1,681 @@
+﻿<!--
+// For the record . . .                                                                                                          
+//                                                                                                                               
+// Copyright © 2025 by Laserocitors.                                                                        
+//                                                                                                                               
+// All rights reserved.  No part of this program may be reproduced, stored in a
+// retrieval system or transmitted, in any form or by any means, including but 
+// not limited to electronic, mechanical, photocopying, recording, or otherwise, 
+// without the express prior written consent of Laserocitors afs@laserocitors.com.
+
+-->   
+    
+<Window Height="600"
+        Title="Data Monitor"
+        Width="330"
+        x:Class="Laserocitor.Views.Monitor.DataMonitor"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:mvvmutils="clr-namespace:Laserocitor.Utils.MVVM"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    
+    <Window.Resources>
+        <mvvmutils:BoolToStringConverter     x:Key="BooleanToStringConverter" FalseValue="Off" TrueValue="On" />
+        <mvvmutils:Enum2DescriptionConverter x:Key="EnumToDescriptionConverter" />
+    </Window.Resources>
+
+    <ScrollViewer Background ="#FF101054" Margin="0,1,0,-1">
+        <StackPanel Orientation="Vertical">
+
+            <!-- Image Parameters sub-section. -->
+            <Border Background="{StaticResource SubSectionBackground}" 
+	                   BorderBrush="{StaticResource SubSectionBorder}" 
+	                   BorderThickness="1" 
+	                   CornerRadius="10" 
+	                   Height="Auto" 
+	                   HorizontalAlignment="Center"  
+	                   Margin="0,5,0,0" 
+	                   Width="300">
+                <StackPanel Margin="0,0,0,0" 
+		                          Orientation="Vertical">
+                    <Label Content="Image Parameters" 
+			                        FontFamily="Vrinda"
+			                        Foreground="Cyan"
+			                        HorizontalAlignment="Left" 
+			                        Margin="0,0,0,0" 
+			                        VerticalAlignment="Top" />
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Name:" Foreground="White" HorizontalContentAlignment="Right" Width="200"/>
+                        <TextBlock Foreground="Cyan" Margin="0,6,0,0" Text="{Binding ImageName}" />
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Mode:" Foreground="White" HorizontalContentAlignment="Right" Width="200" />
+                        <TextBlock Foreground="Cyan" Margin="0,6,0,0" Text="{Binding Path=ImageDrawingMode, Converter={StaticResource EnumToDescriptionConverter}}"/>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Image Size:" Foreground="White" HorizontalContentAlignment="Right" Width="200" />
+                        <TextBlock Foreground="Cyan" Margin="0,6,0,0" Text="{Binding ImageSize}"/>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Zoom:" Foreground="White" HorizontalContentAlignment="Right" Width="200" />
+                        <TextBlock Foreground="Cyan" Margin="0,6,0,0" Text="{Binding Zoom}"/>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Decay:" Foreground="White" HorizontalContentAlignment="Right" Width="200" />
+                        <TextBlock Foreground="Cyan" Margin="0,6,0,0" Text="{Binding Persistence}"/>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Image Position (H):" Foreground="White" HorizontalContentAlignment="Right" Width="200" />
+                        <TextBlock Foreground="Cyan" Margin="0,6,0,0" Text="{Binding TranslationJoystickXPos}"/>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="ImagePosition (V):" Foreground="White" HorizontalContentAlignment="Right" Width="200" />
+                        <TextBlock Foreground="Cyan" Margin="0,6,0,0" Text="{Binding TranslationJoystickYPos}"/>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Position Modulation:" Foreground="White" HorizontalContentAlignment="Right" Width="200" />
+                        <TextBlock Foreground="Cyan" Margin="0,6,0,0" Text="{Binding Path=PosModEnabled, Converter={StaticResource BooleanToStringConverter}}"/>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Position Modulation Direction:" Foreground="White" HorizontalContentAlignment="Right" Width="200" />
+                        <TextBlock Foreground="Cyan" Margin="0,6,0,0" Text="{Binding AutoPosDir, Converter={StaticResource EnumToDescriptionConverter}}"/>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Position Modulation Rate:" Foreground="White" HorizontalContentAlignment="Right" Width="200" />
+                        <TextBlock Foreground="Cyan" Margin="0,6,0,0" Text="{Binding AutoPosRate}"/>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Position Modulation Level:" Foreground="White" HorizontalContentAlignment="Right" Width="200" />
+                        <TextBlock Foreground="Cyan" Margin="0,6,0,0" Text="{Binding AutoPosLevel}"/>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Orbit Angle:" Foreground="White" HorizontalContentAlignment="Right" Width="200" />
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Foreground="Cyan" Margin="0,6,0,0" Text="{Binding Orbit}"/>
+                            <Label Content="°" Foreground="White" />
+                        </StackPanel>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Aspect Ratio:" Foreground="White" HorizontalContentAlignment="Right" Width="200" />
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Foreground="Cyan" Margin="0,6,0,0" Text="{Binding AspectRatio}"/>
+                            <Label Content="% H/V" Foreground="White" />
+                        </StackPanel>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Orbit coupled to Position:" Foreground="White" HorizontalContentAlignment="Right" Width="200" />
+                        <TextBlock Foreground="Cyan" Margin="0,6,0,0" Text="{Binding CoupleOrbit}"/>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="X-Axis Rotation Angle:" Foreground="White" HorizontalContentAlignment="Right" Width="200" />
+                        <StackPanel   Orientation="Horizontal">
+                            <TextBlock Foreground="Cyan" Margin="0,6,0,0" Text="{Binding AxisRotX}"/>
+                            <Label Content="°" Foreground="White" />
+                        </StackPanel>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Y-Axis Rotation Angle:" Foreground="White" HorizontalContentAlignment="Right" Width="200" />
+                        <StackPanel   Orientation="Horizontal">
+                            <TextBlock Foreground="Cyan" Margin="0,6,0,0" Text="{Binding AxisRotY}"/>
+                            <Label Content="°" Foreground="White" />
+                        </StackPanel>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Z-Axis Rotation Angle:" Foreground="White" HorizontalContentAlignment="Right" Width="200" />
+                        <StackPanel   Orientation="Horizontal">
+                            <TextBlock Foreground="Cyan" Margin="0,6,0,0" Text="{Binding AxisRotZ}"/>
+                            <Label Content="°" Foreground="White" />
+                        </StackPanel>
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+
+            <!-- Screen and Beam Parameters sub-section. -->
+            <Border Background="{StaticResource SubSectionBackground}" 
+	                   BorderBrush="{StaticResource SubSectionBorder}" 
+	                   BorderThickness="1" 
+	                   CornerRadius="10" 
+	                   Height="Auto" 
+	                   HorizontalAlignment="Center"  
+	                   Margin="0,5,0,0" 
+	                   Width="300">
+                <StackPanel Margin="0,0,0,0" 
+		                          Orientation="Vertical">
+                    <Label Content="Screen &amp; Beam Parameters" 
+			                        FontFamily="Vrinda"
+			                        Foreground="Cyan"
+			                        HorizontalAlignment="Left" 
+			                        Margin="0,0,0,0" 
+			                        VerticalAlignment="Top" />
+
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Screen Color (R):" Foreground="White" HorizontalContentAlignment="Right" Width="200" />
+                        <TextBlock Foreground="Cyan" Margin="0,6,0,0" Text="{Binding BgColorR}" />
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Screen Color (G):" Foreground="White" HorizontalContentAlignment="Right" Width="200"/>
+                        <TextBlock Foreground="Cyan" Margin="0,6,0,0" Text="{Binding BgColorG}" />
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Screen Color (B):" Foreground="White" HorizontalContentAlignment="Right" Width="200"/>
+                        <TextBlock Foreground="Cyan" Margin="0,6,0,0" Text="{Binding BgColorB}" />
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Beam Color (R):" Foreground="White" HorizontalContentAlignment="Right" Width="200"/>
+                        <TextBlock Foreground="Cyan" Margin="0,6,0,0" Text="{Binding FgColorR}" />
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Beam Color (G):" Foreground="White" HorizontalContentAlignment="Right" Width="200"/>
+                        <TextBlock Foreground="Cyan" Margin="0,6,0,0" Text="{Binding FgColorG}" />
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Beam Color (B):" Foreground="White" HorizontalContentAlignment="Right" Width="200"/>
+                        <TextBlock Foreground="Cyan" Margin="0,6,0,0" Text="{Binding FgColorB}" />
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Color Modulation Mode:" Foreground="White" HorizontalContentAlignment="Right" Width="200" />
+                        <TextBlock Foreground="Cyan" Margin="0,6,0,0" Text="{Binding ColorModMode, Converter={StaticResource EnumToDescriptionConverter}}"/>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Sync Color Modulation Frequency:" Foreground="White" HorizontalContentAlignment="Right" Width="200" />
+                        <TextBlock Foreground="Cyan" Margin="0,6,0,0" Text="{Binding ColorModFreq}"/>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Color Modulation Osc A Frequency:" Foreground="White" HorizontalContentAlignment="Right" Width="200" />
+                        <TextBlock Foreground="Cyan" Margin="0,6,0,0" Text="{Binding OscAFreq}"/>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Color Modulation Osc B Frequency:" Foreground="White" HorizontalContentAlignment="Right" Width="200" />
+                        <TextBlock Foreground="Cyan" Margin="0,6,0,0" Text="{Binding OscBFreq}"/>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Color Modulation Osc C Frequency:" Foreground="White" HorizontalContentAlignment="Right" Width="200" />
+                        <TextBlock Foreground="Cyan" Margin="0,6,0,0" Text="{Binding OscCFreq}"/>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Color Modulation Red Source:" Foreground="White" HorizontalContentAlignment="Right" Width="200" />
+                        <TextBlock Foreground="Cyan" Margin="0,6,0,0" Text="{Binding ColorModOscAssignRed, Converter={StaticResource EnumToDescriptionConverter}}"/>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Color Modulation Green Source:" Foreground="White" HorizontalContentAlignment="Right" Width="200" />
+                        <TextBlock Foreground="Cyan" Margin="0,6,0,0" Text="{Binding ColorModOscAssignGreen, Converter={StaticResource EnumToDescriptionConverter}}"/>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Color Modulation Red Source:" Foreground="White" HorizontalContentAlignment="Right" Width="200" />
+                        <TextBlock Foreground="Cyan" Margin="0,6,0,0" Text="{Binding ColorModOscAssignBlue, Converter={StaticResource EnumToDescriptionConverter}}"/>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Chopper:" Foreground="White" HorizontalContentAlignment="Right" Width="200" />
+                        <TextBlock Foreground="Cyan" Margin="0,6,0,0" Text="{Binding Path=ChopperEnabled, Converter={StaticResource BooleanToStringConverter}}"/>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Chopper Frequency Value:" Foreground="White" HorizontalContentAlignment="Right" Width="200" />
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Foreground="Cyan" Margin="0,6,0,0" Text="{Binding ChopperFrequency}"/>
+                            <Label Content="Hz" Foreground="White" />
+                        </StackPanel>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Chopper Duty Cycle Value:" Foreground="White" HorizontalContentAlignment="Right" Width="200" />
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Foreground="Cyan" Margin="0,6,0,0" Text="{Binding ChopperDutyCycle}"/>
+                            <Label Content="%" Foreground="White" />
+                        </StackPanel>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Red Chopper Enabled:" Foreground="White" HorizontalContentAlignment="Right" Width="200" />
+                        <TextBlock Foreground="Cyan" Margin="0,6,0,0" Text="{Binding ChopperREnabled}" />
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Green Chopper Enabled:" Foreground="White" HorizontalContentAlignment="Right" Width="200" />
+                        <TextBlock Foreground="Cyan" Margin="0,6,0,0" Text="{Binding ChopperGEnabled}" />
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Blue Chopper Enabled:" Foreground="White" HorizontalContentAlignment="Right" Width="200" />
+                        <TextBlock Foreground="Cyan" Margin="0,6,0,0" Text="{Binding ChopperBEnabled}" />
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Color Mod Sync Source:" Foreground="White" HorizontalContentAlignment="Right" Width="200" />
+                        <TextBlock Foreground="Cyan" Margin="0,6,0,0" Text="{Binding ColorModSyncSource, Converter={StaticResource EnumToDescriptionConverter}}"/>
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+
+            <!-- Screen and Beam Parameters sub-section. -->
+            <Border Background="{StaticResource SubSectionBackground}" 
+	                   BorderBrush="{StaticResource SubSectionBorder}" 
+	                   BorderThickness="1" 
+	                   CornerRadius="10" 
+	                   Height="Auto" 
+	                   HorizontalAlignment="Center"  
+	                   Margin="0,5,0,0" 
+	                   Width="300">
+                <StackPanel Margin="0,0,0,0" 
+		                          Orientation="Vertical">
+                    <Label Content="Cycloid Parameters" 
+			                        FontFamily="Vrinda"
+			                        Foreground="Cyan"
+			                        HorizontalAlignment="Left" 
+			                        Margin="0,0,0,0" 
+			                        VerticalAlignment="Top" />
+
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Cycloid Rate:" Foreground="White" HorizontalContentAlignment="Right" Width="200" />
+                        <TextBlock Foreground="Cyan" Margin="0,6,0,0" Text="{Binding CycloidRate}"/>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Cycloid Rolling Circle Sweep Length:" Foreground="White" HorizontalContentAlignment="Right" Width="200" />
+                        <TextBlock Foreground="Cyan" Margin="0,6,0,0" Text="{Binding CycloidL}"/>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Cycloid Fixed Circle Radius:" Foreground="White" HorizontalContentAlignment="Right" Width="200" />
+                        <TextBlock Foreground="Cyan" Margin="0,6,0,0" Text="{Binding CycloidRf}"/>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Cycloid Rolling Circle Radius:" Foreground="White" HorizontalContentAlignment="Right" Width="200" />
+                        <TextBlock Foreground="Cyan" Margin="0,6,0,0" Text="{Binding CycloidRr}"/>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Auto Cycloid Sweep Length Enabled:" Foreground="White" HorizontalContentAlignment="Right" Width="200" />
+                        <TextBlock Foreground="Cyan" Margin="0,6,0,0" Text="{Binding AutoCSLEnabled}" />
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Auto Cycloid Sweep Waveform:" Foreground="White" HorizontalContentAlignment="Right" Width="200" />
+                        <TextBlock Foreground="Cyan" Margin="0,6,0,0" Text="{Binding ASLModOscWave, Converter={StaticResource EnumToDescriptionConverter}}"/>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Auto Cycloid Sweep Freq:" Foreground="White" HorizontalContentAlignment="Right" Width="200" />
+                        <TextBlock Foreground="Cyan" Margin="0,6,0,0" Text="{Binding CSLOscFreq}" />
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Auto Cycloid Sweep Amplitude:" Foreground="White" HorizontalContentAlignment="Right" Width="200" />
+                        <TextBlock Foreground="Cyan" Margin="0,6,0,0" Text="{Binding CSLOscAmpl}" />
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+
+            <!-- Radial Scan Parameters sub-section. -->
+            <Border Background="{StaticResource SubSectionBackground}" 
+	                   BorderBrush="{StaticResource SubSectionBorder}" 
+	                   BorderThickness="1" 
+	                   CornerRadius="10" 
+	                   Height="Auto" 
+	                   HorizontalAlignment="Center"  
+	                   Margin="0,5,0,0" 
+	                   Width="300">
+                <StackPanel Margin="0,0,0,0" 
+		                          Orientation="Vertical">
+                    <Label Content="Radial Scan Parameters" 
+			                        FontFamily="Vrinda"
+			                        Foreground="Cyan"
+			                        HorizontalAlignment="Left" 
+			                        Margin="0,0,0,0" 
+			                        VerticalAlignment="Top" />
+
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Perspective H Value:" Foreground="White" HorizontalContentAlignment="Right" Width="200" />
+                        <TextBlock Foreground="Cyan" Margin="0,6,0,0" Text="{Binding PerspectiveCtlH}"/>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Perspective V Value:" Foreground="White" HorizontalContentAlignment="Right" Width="200" />
+                        <TextBlock Foreground="Cyan" Margin="0,6,0,0" Text="{Binding PerspectiveCtlV}"/>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Perspective Modulation:" Foreground="White" HorizontalContentAlignment="Right" Width="200" />
+                        <TextBlock Foreground="Cyan" Margin="0,6,0,0" Text="{Binding Path=PerspectiveModEnabled, Converter={StaticResource BooleanToStringConverter}}"/>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Perspective Modulation Direction:" Foreground="White" HorizontalContentAlignment="Right" Width="200" />
+                        <TextBlock Foreground="Cyan" Margin="0,6,0,0" Text="{Binding PersModDir, Converter={StaticResource EnumToDescriptionConverter}}"/>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Perspective Modulation Rate:" Foreground="White" HorizontalContentAlignment="Right" Width="200" />
+                        <TextBlock Foreground="Cyan" Margin="0,6,0,0" Text="{Binding AutoPersRate}"/>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Perspective Modulation Level:" Foreground="White" HorizontalContentAlignment="Right" Width="200" />
+                        <TextBlock Foreground="Cyan" Margin="0,6,0,0" Text="{Binding AutoPersLevel}"/>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Oscillator 1 Waveform:" Foreground="White" HorizontalContentAlignment="Right" Width="200" />
+                        <TextBlock Foreground="Cyan" Margin="0,6,0,0" Text="{Binding Osc1Waveform, Converter={StaticResource EnumToDescriptionConverter}}"/>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Oscillator 1 Frequency:" Foreground="White" HorizontalContentAlignment="Right" Width="200" />
+                        <TextBlock Foreground="Cyan" Margin="0,6,0,0" Text="{Binding ModOscFreq}"/>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Oscillator 1 Amplitude:" Foreground="White" HorizontalContentAlignment="Right" Width="200" />
+                        <TextBlock Foreground="Cyan" Margin="0,6,0,0" Text="{Binding ModOscAmp}"/>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Oscillator 1 Duty Cycle:" Foreground="White" HorizontalContentAlignment="Right" Width="200" />
+                        <StackPanel   Orientation="Horizontal">
+                            <TextBlock Foreground="Cyan" Margin="0,6,0,0" Text="{Binding ModOscDutyCycle}"/>
+                            <Label Content="%" Foreground="White" />
+                        </StackPanel>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Radial Scan Base Geometry:" Foreground="White" HorizontalContentAlignment="Right" Width="200" />
+                        <TextBlock Foreground="Cyan" Margin="0,6,0,0" Text="{Binding RSBaseGeometry, Converter={StaticResource EnumToDescriptionConverter}}" />
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Base Geometry Direction:" Foreground="White" HorizontalContentAlignment="Right" Width="200" />
+                        <TextBlock Foreground="Cyan" Margin="0,6,0,0" Text="{Binding BaseGDirection, Converter={StaticResource EnumToDescriptionConverter}}" />
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Base Geometry Frequency:" Foreground="White" HorizontalContentAlignment="Right" Width="200" />
+                        <TextBlock Foreground="Cyan" Margin="0,6,0,0" Text="{Binding QuadOsc1Freq}" />
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Base Geometry Phase:" Foreground="White" HorizontalContentAlignment="Right" Width="200" />
+                        <StackPanel   Orientation="Horizontal">
+                            <TextBlock Foreground="Cyan" Margin="0,6,0,0" Text="{Binding GenPhase}" />
+                            <Label Content="°" Foreground="White" />
+                        </StackPanel>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Base Geometry Amplitude:" Foreground="White" HorizontalContentAlignment="Right" Width="200" />
+                        <TextBlock Foreground="Cyan" Margin="0,6,0,0" Text="{Binding QuadOsc1Level}" />
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Modulation Oscillator Waveform:" Foreground="White" HorizontalContentAlignment="Right" Width="200" />
+                        <TextBlock Foreground="Cyan" Margin="0,6,0,0" Text="{Binding Osc2Waveform}"/>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Modulation Oscillator Frequency:" Foreground="White" HorizontalContentAlignment="Right" Width="200" />
+                        <TextBlock Foreground="Cyan" Margin="0,6,0,0" Text="{Binding Osc2Freq}" />
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Modulation Oscillator Amplitude:" Foreground="White" HorizontalContentAlignment="Right" Width="200" />
+                        <TextBlock Foreground="Cyan" Margin="0,6,0,0" Text="{Binding Osc2Level}" />
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Modulation Gain:" Foreground="White" HorizontalContentAlignment="Right" Width="200" />
+                        <TextBlock Foreground="Cyan" Margin="0,6,0,0" Text="{Binding ModOscGain}" />
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Modulation Offset:" Foreground="White" HorizontalContentAlignment="Right" Width="200" />
+                        <TextBlock Foreground="Cyan" Margin="0,6,0,0" Text="{Binding ModOscOffset}" />
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Gain Modulation:" Foreground="White" HorizontalContentAlignment="Right" Width="200" />
+                        <TextBlock Foreground="Cyan" Margin="0,6,0,0" Text="{Binding Path=MultGainModEnabled, Converter={StaticResource BooleanToStringConverter}}"/>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Gain Modulation Inverter:" Foreground="White" HorizontalContentAlignment="Right" Width="200" />
+                        <TextBlock Foreground="Cyan" Margin="0,6,0,0" Text="{Binding Path=Osc2InvertEnabled, Converter={StaticResource BooleanToStringConverter}}"/>
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+
+            <!-- Lissajous Parameters sub-section. -->
+            <Border Background="{StaticResource SubSectionBackground}" 
+	                   BorderBrush="{StaticResource SubSectionBorder}" 
+	                   BorderThickness="1" 
+	                   CornerRadius="10" 
+	                   Height="Auto" 
+	                   HorizontalAlignment="Center"  
+	                   Margin="0,5,0,0" 
+	                   Width="300">
+                <StackPanel Margin="0,0,0,0" 
+		                          Orientation="Vertical">
+                    <Label Content="Lissajous Parameters" 
+			                        FontFamily="Vrinda"
+			                        Foreground="Cyan"
+			                        HorizontalAlignment="Left" 
+			                        Margin="0,0,0,0" 
+			                        VerticalAlignment="Top" />
+
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Lissajous Oscillator 1 Waveform:" Foreground="White" HorizontalContentAlignment="Right" Width="200" />
+                        <TextBlock Foreground="Cyan" Margin="0,6,0,0" Text="{Binding LMXOscWave, Converter={StaticResource EnumToDescriptionConverter}}"/>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Lissajous Oscillator 1 Frequency:" Foreground="White" HorizontalContentAlignment="Right" Width="200" />
+                        <TextBlock Foreground="Cyan" Margin="0,6,0,0" Text="{Binding LXOsc1Freq}" />
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Lissajous Oscillator 1 Duty Cycle:" Foreground="White" HorizontalContentAlignment="Right" Width="200" />
+                        <TextBlock Foreground="Cyan" Margin="0,6,0,0" Text="{Binding LXOsc1DutyCycle}" />
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Lissajous Oscillator 1 Amplitude:" Foreground="White" HorizontalContentAlignment="Right" Width="200" />
+                        <TextBlock Foreground="Cyan" Margin="0,6,0,0" Text="{Binding LXOsc1Amplitude}" />
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Lissajous Oscillator 2 Waveform:" Foreground="White" HorizontalContentAlignment="Right" Width="200" />
+                        <TextBlock Foreground="Cyan" Margin="0,6,0,0" Text="{Binding LMYOscWave, Converter={StaticResource EnumToDescriptionConverter}}"/>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Lissajous Oscillator 2 Frequency:" Foreground="White" HorizontalContentAlignment="Right" Width="200" />
+                        <TextBlock Foreground="Cyan" Margin="0,6,0,0" Text="{Binding LYOsc1Freq}" />
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Lissajous Oscillator 2 Duty Cycle:" Foreground="White" HorizontalContentAlignment="Right" Width="200" />
+                        <TextBlock Foreground="Cyan" Margin="0,6,0,0" Text="{Binding LYOsc1DutyCycle}" />
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Lissajous Oscillator 2 Amplitude:" Foreground="White" HorizontalContentAlignment="Right" Width="200" />
+                        <TextBlock Foreground="Cyan" Margin="0,6,0,0" Text="{Binding LYOsc1Amplitude}" />
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Lissajous X Modulator Waveform:" Foreground="White" HorizontalContentAlignment="Right" Width="200" />
+                        <TextBlock Foreground="Cyan" Margin="0,6,0,0" Text="{Binding LMXModOscWave, Converter={StaticResource EnumToDescriptionConverter}}"/>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Lissajous X Modulator Frequency:" Foreground="White" HorizontalContentAlignment="Right" Width="200" />
+                        <TextBlock Foreground="Cyan" Margin="0,6,0,0" Text="{Binding LXMOscFreq}" />
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Lissajous X Modulator Duty Cycle:" Foreground="White" HorizontalContentAlignment="Right" Width="200" />
+                        <TextBlock Foreground="Cyan" Margin="0,6,0,0" Text="{Binding LXMOscDutyCycle}" />
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Lissajous X Modulator Amplitude:" Foreground="White" HorizontalContentAlignment="Right" Width="200" />
+                        <TextBlock Foreground="Cyan" Margin="0,6,0,0" Text="{Binding LXMOscAmplitude}" />
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Lissajous Y Modulator Waveform:" Foreground="White" HorizontalContentAlignment="Right" Width="200" />
+                        <TextBlock Foreground="Cyan" Margin="0,6,0,0" Text="{Binding LMYModOscWave, Converter={StaticResource EnumToDescriptionConverter}}"/>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Lissajous Y Modulator Frequency:" Foreground="White" HorizontalContentAlignment="Right" Width="200" />
+                        <TextBlock Foreground="Cyan" Margin="0,6,0,0" Text="{Binding LYMOscFreq}" />
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Lissajous Y Modulator Duty Cycle:" Foreground="White" HorizontalContentAlignment="Right" Width="200" />
+                        <TextBlock Foreground="Cyan" Margin="0,6,0,0" Text="{Binding LYMOscDutyCycle}" />
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Lissajous Y Modulator Amplitude:" Foreground="White" HorizontalContentAlignment="Right" Width="200" />
+                        <TextBlock Foreground="Cyan" Margin="0,6,0,0" Text="{Binding LYMOscAmplitude}" />
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Lissajous X Modulation:" Foreground="White" HorizontalContentAlignment="Right" Width="200" />
+                        <TextBlock Foreground="Cyan" Margin="0,6,0,0" Text="{Binding Path=LXModEnabled, Converter={StaticResource BooleanToStringConverter}}"/>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Lissajous Y Modulation:" Foreground="White" HorizontalContentAlignment="Right" Width="200" />
+                        <TextBlock Foreground="Cyan" Margin="0,6,0,0" Text="{Binding Path=LYModEnabled, Converter={StaticResource BooleanToStringConverter}}"/>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Lissajous X Modulator Gain:" Foreground="White" HorizontalContentAlignment="Right" Width="200" />
+                        <TextBlock Foreground="Cyan" Margin="0,6,0,0" Text="{Binding LXModGain}" />
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Lissajous X Modulator Offset:" Foreground="White" HorizontalContentAlignment="Right" Width="200" />
+                        <TextBlock Foreground="Cyan" Margin="0,6,0,0" Text="{Binding LXModOffset}" />
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Lissajous Y Modulator Gain:" Foreground="White" HorizontalContentAlignment="Right" Width="200" />
+                        <TextBlock Foreground="Cyan" Margin="0,6,0,0" Text="{Binding LYModGain}" />
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Lissajous Y Modulator Offset:" Foreground="White" HorizontalContentAlignment="Right" Width="200" />
+                        <TextBlock Foreground="Cyan" Margin="0,6,0,0" Text="{Binding LYModOffset}" />
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+
+            <!-- Spiral Generator Parameters sub-section. -->
+            <Border Background="{StaticResource SubSectionBackground}" 
+	                   BorderBrush="{StaticResource SubSectionBorder}" 
+	                   BorderThickness="1" 
+	                   CornerRadius="10" 
+	                   Height="Auto" 
+	                   HorizontalAlignment="Center"  
+	                   Margin="0,5,0,0" 
+	                   Width="300">
+                <StackPanel Margin="0,0,0,0" 
+		                          Orientation="Vertical">
+                    <Label Content="Spiral Parameters" 
+			                        FontFamily="Vrinda"
+			                        Foreground="Cyan"
+			                        HorizontalAlignment="Left" 
+			                        Margin="0,0,0,0" 
+			                        VerticalAlignment="Top" />
+
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Direction:" Foreground="White" HorizontalContentAlignment="Right" Width="200" />
+                        <TextBlock Foreground="Cyan" Margin="0,6,0,0" Text="{Binding SpiralDirection, Converter={StaticResource EnumToDescriptionConverter}}"/>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Size:" Foreground="White" HorizontalContentAlignment="Right" Width="200" />
+                        <TextBlock Foreground="Cyan" Margin="0,6,0,0" Text="{Binding SpiralSize}"/>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Ramp Frequency:" Foreground="White" HorizontalContentAlignment="Right" Width="200" />
+                        <TextBlock Foreground="Cyan" Margin="0,6,0,0" Text="{Binding SpiralRampFrequency}"/>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Spiral Ramp Gain:" Foreground="White" HorizontalContentAlignment="Right" Width="200" />
+                        <TextBlock Foreground="Cyan" Margin="0,6,0,0" Text="{Binding SpiralRampGain}"/>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Spiral Ramp Offset:" Foreground="White" HorizontalContentAlignment="Right" Width="200" />
+                        <TextBlock Foreground="Cyan" Margin="0,6,0,0" Text="{Binding SpiralRampOffset}"/>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Perspective H Value:" Foreground="White" HorizontalContentAlignment="Right" Width="200" />
+                        <TextBlock Foreground="Cyan" Margin="0,6,0,0" Text="{Binding SpiralPersJSXPos}"/>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Perspective V Value:" Foreground="White" HorizontalContentAlignment="Right" Width="200" />
+                        <TextBlock Foreground="Cyan" Margin="0,6,0,0" Text="{Binding SpiralPersJSYPos}"/>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Perspective Modulation:" Foreground="White" HorizontalContentAlignment="Right" Width="200" />
+                        <TextBlock Foreground="Cyan" Margin="0,6,0,0" Text="{Binding Path=SpiralPersModEnable, Converter={StaticResource BooleanToStringConverter}}"/>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Perspective Modulation Direction:" Foreground="White" HorizontalContentAlignment="Right" Width="200" />
+                        <TextBlock Foreground="Cyan" Margin="0,6,0,0" Text="{Binding SpiralPersDirection, Converter={StaticResource EnumToDescriptionConverter}}"/>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Perspective Modulation Rate:" Foreground="White" HorizontalContentAlignment="Right" Width="200" />
+                        <TextBlock Foreground="Cyan" Margin="0,6,0,0" Text="{Binding SpiralPersModFrequency}"/>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Perspective Modulation Level:" Foreground="White" HorizontalContentAlignment="Right" Width="200" />
+                        <TextBlock Foreground="Cyan" Margin="0,6,0,0" Text="{Binding SpiralPersModLevel}"/>
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+        </StackPanel>
+    </ScrollViewer>
+</Window>

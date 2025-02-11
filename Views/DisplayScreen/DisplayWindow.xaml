@@ -1,0 +1,23 @@
+﻿<!--
+// For the record . . .                                                                                                          
+//                                                                                                                               
+// Copyright © 2025 by Laserocitors.                                                                        
+//                                                                                                                               
+// All rights reserved.  No part of this program may be reproduced, stored in a
+// retrieval system or transmitted, in any form or by any means, including but 
+// not limited to electronic, mechanical, photocopying, recording, or otherwise, 
+// without the express prior written consent of Laserocitors afs@laserocitors.com.
+
+-->
+     
+<Window Background="Black"
+        Height="500"
+        Icon="/Laserocitor;component/Resources/laser.ico"
+        Title="Display Screen"  
+        Width="500"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        x:Class="Laserocitor.Views.DisplayScreen.DisplayWindow">
+
+    <Image Margin="0,0,0,0" Source="{Binding DisplayImage}" x:Name="DisplImage" />    
+</Window>

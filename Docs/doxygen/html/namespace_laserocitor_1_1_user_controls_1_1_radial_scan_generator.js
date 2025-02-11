@@ -1,0 +1,4 @@
+var namespace_laserocitor_1_1_user_controls_1_1_radial_scan_generator =
+[
+    [ "RadialScanGenerator", "class_laserocitor_1_1_user_controls_1_1_radial_scan_generator_1_1_radial_scan_generator.html", "class_laserocitor_1_1_user_controls_1_1_radial_scan_generator_1_1_radial_scan_generator" ]
+];

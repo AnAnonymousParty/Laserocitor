@@ -1,0 +1,51 @@
+﻿<!--
+// For the record . . .                                                                                                          
+//                                                                                                                               
+// Copyright © 2025 by Laserocitors.                                                                        
+//                                                                                                                               
+// All rights reserved.  No part of this program may be reproduced, stored in a
+// retrieval system or transmitted, in any form or by any means, including but 
+// not limited to electronic, mechanical, photocopying, recording, or otherwise, 
+// without the express prior written consent of Laserocitors afs@laserocitors.com.
+
+-->
+    
+    
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:system="clr-namespace:System;assembly=mscorlib"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <system:String x:Key="SG_ToolTipText_APDTS">
+        Sets the direction (CW/CCW) of the automatic perspective rotation.
+    </system:String>
+    <system:String x:Key="SG_ToolTipText_APLRC">
+        Sets the intensity of the automatic perspective rotation.
+    </system:String>    
+    <system:String x:Key="SG_ToolTipText_APRRC">
+        Sets the rate of the automatic perspective rotation.
+    </system:String>    
+    <system:String x:Key="SG_ToolTipText_APTS">
+        Enable/Disable automatic perspective rotation.
+    </system:String>    
+    <system:String x:Key="SG_ToolTipText_PJS">
+        Shifts the perspective of the spiral.
+    </system:String>
+    <system:String x:Key="SG_ToolTipText_RFRC">
+        Controls the rate at which the spiral is ramped in/out.
+    </system:String>
+    <system:String x:Key="SG_ToolTipText_RGRC">
+        Controls how much of the ramp waveform is applied to the spiral.
+    </system:String>
+    <system:String x:Key="SG_ToolTipText_RORC">
+        Establishes the start/end points of when the ramp waveform is applied to the spiral.
+    </system:String>    
+    <system:String x:Key="SG_ToolTipText_SDTS">
+        Sets the direction (CW/CCW) of the spiral.
+    </system:String>
+    <system:String x:Key="SG_ToolTipText_SRC">
+        Sets the overall size of the spiral image.
+    </system:String>
+    <system:String x:Key="SG_ToolTipText_SGS">
+        The controls in this section affect the Spiral Generator mode.
+    </system:String>
+</ResourceDictionary>

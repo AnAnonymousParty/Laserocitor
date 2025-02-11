@@ -1,0 +1,90 @@
+﻿<!--
+// For the record . . .                                                                                                          
+//                                                                                                                               
+// Copyright © 2025 by Laserocitors.                                                                        
+//                                                                                                                               
+// All rights reserved.  No part of this program may be reproduced, stored in a
+// retrieval system or transmitted, in any form or by any means, including but 
+// not limited to electronic, mechanical, photocopying, recording, or otherwise, 
+// without the express prior written consent of Laserocitors afs@laserocitors.com.
+
+-->
+    
+<!-- This user control provides a set of buttons for selecting an oscillator waveform. -->
+
+<UserControl d:DesignHeight="100" 
+             d:DesignWidth="120"
+             mc:Ignorable="d"
+             x:Class="Laserocitor.UserControls.WaveformSelector.WaveformSelector"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"             
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <!-- Main container. -->
+    <StackPanel DataContext="{Binding RelativeSource={RelativeSource AncestorType=UserControl}}"
+                HorizontalAlignment="Center" 
+                Margin="0,0,0,0"
+                Orientation="Vertical"
+                VerticalAlignment="Center">
+        
+        <!-- Row 1 controls container. -->
+        <StackPanel Height="30"
+                    HorizontalAlignment="Center"
+                    Margin="0,0,0,0"
+                    Orientation="Horizontal"   
+                    VerticalAlignment="Top" 
+                    Width="91">
+            <Button Click="OscSinBtnClkd" 
+                    Style="{StaticResource WaveButtonStyle}" 
+                    ToolTip="{StaticResource WS_ToolTipText_SB}"
+                    Width="30"
+                    x:Name="OscSinBtn">
+                <ContentPresenter Content="{StaticResource SineWaveIcon}" />
+            </Button>
+            <Button Click="OscTriBtnClkd"   
+                    Style="{StaticResource WaveButtonStyle}" 
+                    ToolTip="{StaticResource WS_ToolTipText_TB}"
+                    Width="30"
+                    x:Name="OscTriBtn">
+                <ContentPresenter Content="{StaticResource TriWaveIcon}" />
+            </Button>
+            <Button Click="OscSawBtnClkd"   
+                    Style="{StaticResource WaveButtonStyle}"
+                    ToolTip="{StaticResource WS_ToolTipText_WB}"                    
+                    Width="30"
+                    x:Name="OscSawBtn">
+                <ContentPresenter Content="{StaticResource SawtoothWaveIcon}" />
+            </Button>
+        </StackPanel>
+
+        <!-- Row 2 controls container. -->
+        <StackPanel Height="30"
+                    HorizontalAlignment="Center"
+                    Margin="0,0,0,0"
+                    Orientation="Horizontal"   
+                    Width="91">
+            <Button Click="OscRampBtnClkd"  
+                    Style="{StaticResource WaveButtonStyle}" 
+                    ToolTip="{StaticResource WS_ToolTipText_RB}"                    
+                    Width="30"
+                    x:Name="OscRampBtn">
+                <ContentPresenter Content="{StaticResource RampWaveIcon}" />
+            </Button>
+            <Button Click="OscRectSinBtnClkd"                      
+                    Style="{StaticResource WaveButtonStyle}" 
+                    ToolTip="{StaticResource WS_ToolTipText_RSB}"                    
+                    Width="30"
+                    x:Name="OscRectSinBtn">
+                <ContentPresenter Content="{StaticResource RectSineWaveIcon}" />
+            </Button>
+            <Button Click="OscSqBtnClkd"  
+                    Style="{StaticResource WaveButtonStyle}" 
+                    ToolTip="{StaticResource WS_ToolTipText_QB}"                    
+                    Width="30"
+                    x:Name="OscSqBtn">
+                <ContentPresenter Content="{StaticResource SquareWaveIcon}" />
+            </Button>
+        </StackPanel>
+    </StackPanel>
+</UserControl>

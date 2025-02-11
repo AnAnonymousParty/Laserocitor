@@ -1,0 +1,360 @@
+﻿<!--
+// For the record . . .                                                                                                          
+//                                                                                                                               
+// Copyright © 2025 by Laserocitors.                                                                        
+//                                                                                                                               
+// All rights reserved.  No part of this program may be reproduced, stored in a
+// retrieval system or transmitted, in any form or by any means, including but 
+// not limited to electronic, mechanical, photocopying, recording, or otherwise, 
+// without the express prior written consent of Laserocitors afs@laserocitors.com.
+
+-->
+
+<!-- Laserocitor Main Screen, a collection of user sontrols bound to the Laserocitor
+     View Model.                                                                      -->
+
+<Window Background="Black"
+        Height="980"
+        Icon="/Laserocitor;component/Resources/laser.ico"
+        MaxHeight="1100"
+        MaxWidth="1880"      
+        MinHeight="300"
+        MinWidth="500"
+        mc:Ignorable="d"
+        Title="Laser Projector Simulator" 
+        Width="1730"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+        xmlns:bcuc="clr-namespace:Laserocitor.UserControls.BeamChopper" 
+        xmlns:cguc="clr-namespace:Laserocitor.UserControls.CycloidGenerator"
+        xmlns:cmuc="clr-namespace:Laserocitor.UserControls.ColorModulation"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"  
+        xmlns:iauc="clr-namespace:Laserocitor.UserControls.ImageAssignment"
+        xmlns:ipuc="clr-namespace:Laserocitor.UserControls.ImageParameters"
+        xmlns:lguc="clr-namespace:Laserocitor.UserControls.LissajousGenerator"         
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:mu="clr-namespace:Laserocitor.Utils.MVVM"
+        xmlns:rsuc="clr-namespace:Laserocitor.UserControls.RadialScanGenerator" 
+        xmlns:sguc="clr-namespace:Laserocitor.UserControls.SpiralGenerator" 
+        xmlns:spuc="clr-namespace:Laserocitor.UserControls.ScreenParms"   
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        x:Class="Laserocitor.Views.Main.MainWindow">
+
+    <Window.Resources>
+        <mu:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter" />
+        <mu:StyleConverter x:Key="StyleConverter" />
+    </Window.Resources>
+
+    <!-- Main Window container. -->
+    <Grid>
+
+        <!-- Top Menu Bar. -->
+        <Menu Background="{StaticResource SubSectionBackground}" 
+              BorderBrush="DarkCyan"
+              Foreground="AliceBlue" 
+              Margin="0,0,0,10">
+            <Menu.BitmapEffect>
+                <DropShadowBitmapEffect />
+            </Menu.BitmapEffect>
+            <MenuItem Background="{StaticResource SubSubSectionBackground}" 
+                      BorderBrush="DarkCyan"
+                      Foreground="AliceBlue" 
+                      Header="_File">
+                <MenuItem Background="{StaticResource SubSubSectionBackground}" 
+                          BorderBrush="DarkCyan"
+                          Foreground="AliceBlue" 
+                          Header="_Image">
+                    <MenuItem Background="{StaticResource SubSubSectionBackground}" 
+                              BorderBrush="DarkCyan"
+                              Command="{Binding LoadCommand}"
+                              Foreground="AliceBlue" 
+                              Header="_Open" />
+                    <MenuItem Background="{StaticResource SubSubSectionBackground}"
+                              BorderBrush="DarkCyan"
+                              Command="{Binding SaveCommand}" 
+                              Foreground="AliceBlue"
+                              Header="_Save" />
+                </MenuItem>
+                <MenuItem Background="{StaticResource SubSubSectionBackground}"
+                          BorderBrush="DarkCyan"
+                          Foreground="AliceBlue"
+                          Header="_Sequence">
+
+                    <MenuItem Background="{StaticResource SubSubSectionBackground}"
+                              BorderBrush="DarkCyan"
+                              Foreground="AliceBlue"
+                              Header="_Open" />
+                    <MenuItem Background="{StaticResource SubSubSectionBackground}"
+                              BorderBrush="DarkCyan"
+                              Foreground="AliceBlue"
+                              Header="_Save" />
+                </MenuItem>
+                <MenuItem Background="{StaticResource SubSubSectionBackground}"
+                          BorderBrush="DarkCyan"
+                          Foreground="AliceBlue"
+                          Header="Scene">
+                    <MenuItem Background="{StaticResource SubSubSectionBackground}"
+                              BorderBrush="DarkCyan"
+                              Foreground="AliceBlue"
+                              Header="_Open" />
+                    <MenuItem Background="{StaticResource SubSubSectionBackground}"
+                              BorderBrush="DarkCyan"
+                              Foreground="AliceBlue"
+                              Header="_Save" />
+                </MenuItem>
+                <Separator BorderBrush="DarkCyan"/>
+                <MenuItem Background="{StaticResource SubSubSectionBackground}"
+                          BorderBrush="DarkCyan"
+                          Foreground="AliceBlue"                          
+                          Header="_Exit" />
+            </MenuItem>
+            <MenuItem Background="{StaticResource SubSubSectionBackground}"
+                      BorderBrush="DarkCyan"
+                      Foreground="AliceBlue"
+                      Header="_Tools">
+                <MenuItem Background="{StaticResource SubSubSectionBackground}"
+                          BorderBrush="DarkCyan"
+                          Command="{Binding ClearCommand}"     
+                          Foreground="AliceBlue"
+                          Header="_Clear Display Screen" />
+                <MenuItem Background="{StaticResource SubSubSectionBackground}"
+                          BorderBrush="DarkCyan"
+                          Command="{Binding PauseCommand}"    
+                          Foreground="AliceBlue"
+                          Header="_Pause" />
+                <MenuItem Background="{StaticResource SubSubSectionBackground}"
+                          BorderBrush="DarkCyan"
+                          Command="{Binding ResetCommand}"  
+                          Foreground="AliceBlue"
+                          Header="_Reset All Controls" />
+                <MenuItem Background="{StaticResource SubSubSectionBackground}"
+                          BorderBrush="DarkCyan"
+                          Command="{Binding ShowDetailsCommand}" 
+                          Foreground="AliceBlue"
+                          Header="_View Data" />
+            </MenuItem>
+        </Menu>
+
+        <!-- Container for all the User Controls. -->
+        <StackPanel Orientation="Vertical"
+                    Margin="0,12,0,0">
+            <StackPanel Orientation="Horizontal"
+                        Margin="0,0,0,0">
+                <StackPanel Orientation="Vertical"
+                            Margin="0,0,0,0">
+                    <StackPanel Orientation="Horizontal"
+                                Margin="0,0,0,0">
+
+                        <!-- Image Parameters (Translation/Rotation/Size) Section. -->
+                        <ipuc:ImageParameters IPAspectRatio="{Binding AspectRatio, Mode=TwoWay}"
+                                              IPAutoPosition="{Binding PosModEnabled, Mode=TwoWay}"
+                                              IPAutoPositionDir="{Binding AutoPosDir, Mode=TwoWay}"
+                                              IPAutoPosLevel="{Binding AutoPosLevel, Mode=TwoWay}"
+                                              IPAutoPosOrbit="{Binding CoupleOrbit, Mode=TwoWay}"
+                                              IPAutoPosRate="{Binding AutoPosRate, Mode=TwoWay}"
+                                              IPDecay="{Binding Persistence, Mode=TwoWay}"
+                                              IPImageSize="{Binding ImageSize, Mode=TwoWay}"
+                                              IPOrbit="{Binding Orbit, Mode=TwoWay}"
+                                              IPZoom="{Binding Zoom, Mode=TwoWay}"
+                                              JSAutoCenter="False"
+                                              JSXPos="{Binding TranslationJoystickXPos, Mode=TwoWay}"
+                                              JSYPos="{Binding TranslationJoystickYPos, Mode=TwoWay}"  
+                                              PosPresetX="{Binding TranslationJoystickXPos, Mode=TwoWay}"
+                                              PosPresetY="{Binding TranslationJoystickYPos, Mode=TwoWay}"                                              
+                                              SectionTitleText="IMAGE"
+                                              XRotation="{Binding AxisRotX, Mode=TwoWay}"
+                                              YRotation="{Binding AxisRotY, Mode=TwoWay}"
+                                              ZRotation="{Binding AxisRotZ, Mode=TwoWay}" />
+
+                        <!-- Cycloid Generator Section. -->
+                        <cguc:CycloidGenerator ASLLevel="{Binding CSLOscAmpl, Mode=TwoWay}"
+                                               ASLModEnabled="{Binding AutoCSLEnabled, Mode=TwoWay}"
+                                               ASLRate="{Binding CSLOscFreq, Mode=TwoWay}"
+                                               ASLModWaveform="{Binding ASLModOscWave, Mode=TwoWay}"
+                                               FixedCircleRadius="{Binding CycloidRf, Mode=TwoWay}"
+                                               Margin="5,0,0,0"  
+                                               RollingCircleRadius="{Binding CycloidRr, Mode=TwoWay}"
+                                               ScanRate="{Binding CycloidRate, Mode=TwoWay}" 
+                                               SectionTitleText="CYCLOID PARAMETERS" 
+                                               SweepLength="{Binding CycloidL, Mode=TwoWay}"
+                                               VerticalAlignment="Top" Grid.ColumnSpan="2" >
+                            <cguc:CycloidGenerator.Style>
+                                <Style TargetType="{x:Type cguc:CycloidGenerator}">
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding ImageDrawingMode}" 
+                                                                     Value="eCycloid">
+                                            <Setter Property="ControlEnabled" 
+                                                                    Value="True" />
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </cguc:CycloidGenerator.Style>
+                        </cguc:CycloidGenerator>
+                        <StackPanel Orientation="Vertical"
+                                        Margin="30,0,0,0">
+
+                            <!-- Image Assignment Section. -->
+                            <iauc:ImageAssignment BCDrawingMode="{Binding ImageDrawingMode, Mode=TwoWay}"
+                                                      Margin="0,0,0,0"
+                                                      SectionTitleText="MODE" />
+                        </StackPanel>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal"
+                                Margin="0,0,0,0">
+
+                        <!-- Lissajous Generator Section. -->
+                        <lguc:LissajousGenerator Margin="0,0,0,0"  
+                                                 SectionTitleText="LISSAJOUS PARAMETERS"
+                                                 x:Name="LMUC"
+                                                 XModEnabled="{Binding LXModEnabled, Mode=TwoWay}"
+                                                 XModGain="{Binding LXModGain, Mode=TwoWay}"
+                                                 XModOffset="{Binding LXModOffset, Mode=TwoWay}"
+                                                 XModOscLevel="{Binding LXMOscAmplitude, Mode=TwoWay}" 
+                                                 XModOscRate="{Binding LXMOscFreq, Mode=TwoWay}"
+                                                 XModWaveform="{Binding LMXModOscWave, Mode=TwoWay}"
+                                                 XOscLevel="{Binding LXOsc1Amplitude, Mode=TwoWay}"                                     
+                                                 XOscRate="{Binding LXOsc1Freq, Mode=TwoWay}"
+                                                 XWaveform="{Binding LMXOscWave, Mode=TwoWay}"
+                                                 YModEnabled="{Binding LYModEnabled, Mode=TwoWay}"
+                                                 YModGain="{Binding LYModGain, Mode=TwoWay}"
+                                                 YModOffset="{Binding LYModOffset, Mode=TwoWay}"
+                                                 YModOscLevel="{Binding LYMOscAmplitude, Mode=TwoWay}" 
+                                                 YModOscRate="{Binding LYMOscFreq, Mode=TwoWay}"
+                                                 YModWaveform="{Binding LMYModOscWave, Mode=TwoWay}"
+                                                 YOscLevel="{Binding LYOsc1Amplitude, Mode=TwoWay}"
+                                                 YOscRate="{Binding LYOsc1Freq, Mode=TwoWay}"
+                                                 YWaveform="{Binding LMYOscWave, Mode=TwoWay}" 
+                                                 VerticalAlignment="Top">
+                            <lguc:LissajousGenerator.Style>
+                                <Style TargetType="lguc:LissajousGenerator">
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding ImageDrawingMode}" 
+                                                     Value="eLissajous">
+                                            <Setter Property="ControlEnabled" 
+                                                    Value="True" />
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </lguc:LissajousGenerator.Style>
+                        </lguc:LissajousGenerator>
+
+                        <!-- Beam Chopper Section. -->
+                        <bcuc:BeamChopper BCBlueEnable="{Binding ChopperBEnabled, Mode=TwoWay}"
+                                          BCDutyCycle="{Binding ChopperDutyCycle, Mode=TwoWay}"
+                                          BCGreenEnable="{Binding ChopperGEnabled, Mode=TwoWay}"
+                                          BCMasterEnable="{Binding ChopperEnabled, Mode=TwoWay}" 
+                                          BCRate="{Binding ChopperFrequency, Mode=TwoWay}"
+                                          BCRedEnable="{Binding ChopperREnabled, Mode=TwoWay}"
+                                          Margin="5,0,0,0"
+                                          SectionTitleText="BEAM CHOPPER" />
+                    </StackPanel>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal"
+                            Margin="10,0,0,0">
+
+                    <!-- Radial Scan Generator Section. -->
+                    <rsuc:RadialScanGenerator JSXPos="{Binding PerspectiveCtlH, Mode=TwoWay}"
+                                              JSYPos="{Binding PerspectiveCtlV, Mode=TwoWay}"
+                                              Margin="0,0,0,0"
+                                              PersPresetX="{Binding PerspectiveCtlH, Mode=TwoWay}"
+                                              PersPresetY="{Binding PerspectiveCtlV, Mode=TwoWay}"
+                                              RSBGAmplitude="{Binding QuadOsc1Level, Mode=TwoWay}"
+                                              RSAMFrequency="{Binding Osc2Freq, Mode=TwoWay}"
+                                              RSAMLevel="{Binding RadiatorAMAmpl, Mode=TwoWay}"
+                                              RSAMPhase="{Binding Osc2InvertEnabled, Mode=TwoWay}"
+                                              RSAMWaveform="{Binding Osc2Waveform, Mode=TwoWay}"
+                                              RSBGDirection="{Binding BaseGDirection, Mode=TwoWay}"
+                                              RSBGFrequency="{Binding QuadOsc1Freq, Mode=TwoWay}"
+                                              RSBGPhase="{Binding GenPhase, Mode=TwoWay}"
+                                              RSBGWaveform="{Binding RSBaseGeometry, Mode=TwoWay}"
+                                              RSModGain="{Binding ModOscGain, Mode=TwoWay}"
+                                              RSModOffset="{Binding ModOscOffset, Mode=TwoWay}"                             
+                                              RSPersModDirection="{Binding PersModDir, Mode=TwoWay}" 
+                                              RSPersModEnable="{Binding PerspectiveModEnabled, Mode=TwoWay}"                             
+                                              RSPersModFrequency="{Binding AutoPersRate, Mode=TwoWay}"
+                                              RSPersModLevel="{Binding AutoPersLevel, Mode=TwoWay}"
+                                              RSRadiatorFrequency="{Binding ModOscFreq, Mode=TwoWay}"
+                                              RSRadiatorLevel="{Binding ModOscAmp, Mode=TwoWay}"
+                                              RSRadiatorModEnable="{Binding MultGainModEnabled, Mode=TwoWay}"
+                                              RSRadiatorWaveform="{Binding Osc1Waveform, Mode=TwoWay}"
+                                              RSRDutyCycle="{Binding ModOscDutyCycle, Mode=TwoWay}"                             
+                                              SectionTitleText="RADIAL SCAN PARAMETERS">
+                        <rsuc:RadialScanGenerator.Style>
+                            <Style TargetType="rsuc:RadialScanGenerator">
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding ImageDrawingMode}" Value="eRadialScan">
+                                        <Setter Property="ControlEnabled" Value="True" />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </rsuc:RadialScanGenerator.Style>
+                    </rsuc:RadialScanGenerator>
+
+                    <!-- Spiral Generator Section. -->
+                    <sguc:SpiralGenerator Margin="5,0,0,0"
+                                          SGDirection="{Binding SpiralDirection, Mode=TwoWay}"
+                                          SGPersDirection="{Binding SpiralPersDirection, Mode=TwoWay}"
+                                          SGPersModEnable="{Binding SpiralPersModEnable, Mode=TwoWay}"
+                                          SGPersJSXPos="{Binding SpiralPersJSXPos, Mode=TwoWay}"
+                                          SGPersJSYPos="{Binding SpiralPersJSYPos, Mode=TwoWay}"
+                                          SGPersModFrequency="{Binding SpiralPersModFrequency, Mode=TwoWay}"
+                                          SGPersModLevel="{Binding SpiralPersModLevel, Mode=TwoWay}"
+                                          SGPersPresetX="{Binding SpiralPersJSXPos, Mode=TwoWay}"
+                                          SGPersPresetY="{Binding SpiralPersJSYPos, Mode=TwoWay}"                                          
+                                          SGRampFrequency="{Binding SpiralRampFrequency, Mode=TwoWay}"
+                                          SGRampGain="{Binding SpiralRampGain, Mode=TwoWay}"
+                                          SGRampOffset="{Binding SpiralRampOffset, Mode=TwoWay}"
+                                          SGSize="{Binding SpiralSize, Mode=TwoWay}"
+                                          SectionTitleText="SPIRAL GENERATOR">
+                        <sguc:SpiralGenerator.Style>
+                            <Style TargetType="sguc:SpiralGenerator">
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding ImageDrawingMode}" 
+                                                 Value="eSpiral">
+                                        <Setter Property="ControlEnabled" 
+                                                Value="True" />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </sguc:SpiralGenerator.Style>
+                    </sguc:SpiralGenerator>
+                </StackPanel>
+            </StackPanel>
+            
+            <!-- Screen and Beam Color Section. -->
+            <StackPanel Margin="0,0,0,0"
+                        Orientation="Horizontal">
+
+                <!-- Color Modulation Section. -->
+                <cmuc:ColorModulation CM3PhaseOscRate="{Binding ColorModFreq, Mode=TwoWay}"
+                                      CMBlue="{Binding FgColorB, Mode=TwoWay}"
+                                      CMBlueSource="{Binding ColorModOscAssignBlue, Mode=TwoWay}"  
+                                      CMColorModSource="{Binding ColorModSyncSource, Mode=TwoWay}"
+                                      CMDrawingMode="{Binding ImageDrawingMode, Mode=TwoWay}"
+                                      CMEnable="{Binding ColorModEnabled, Mode=TwoWay}"
+                                      CMGreen="{Binding FgColorG, Mode=TwoWay}"                                  
+                                      CMGreenSource="{Binding ColorModOscAssignGreen, Mode=TwoWay}"
+                                      CMIntensity="{Binding MasterIntensity, Mode=TwoWay}"
+                                      CMMode="{Binding ColorModMode, Mode=TwoWay}"
+                                      CMOscARate="{Binding OscAFreq, Mode=TwoWay}"
+                                      CMOscBRate="{Binding OscBFreq, Mode=TwoWay}"
+                                      CMOscCRate="{Binding OscCFreq, Mode=TwoWay}"
+                                      CMRed="{Binding FgColorR, Mode=TwoWay}"                                  
+                                      CMRedSource="{Binding ColorModOscAssignRed, Mode=TwoWay}" 
+                                      CMRGB="{Binding ImageColor, Mode=TwoWay}" 
+                                      Height="203"
+                                      Margin="0,0,0,0"                                  
+                                      SectionTitleText="COLOR MODULATION"
+                                      VerticalAlignment="Top" />
+
+                <!-- Screen Parameters Section. -->
+                <spuc:ScreenParms Margin="5,0,0,0"
+                                  SectionTitleText="SCREEN"
+                                  SPBgColorB="{Binding BgColorB, Mode=TwoWay}" 
+                                  SPBgColorG="{Binding BgColorG, Mode=TwoWay}"
+                                  SPBgColorR="{Binding BgColorR, Mode=TwoWay}"
+                                  SPBgColorRGB="{Binding ScreenColor, Mode=TwoWay}" />
+            </StackPanel>
+
+        </StackPanel>
+    </Grid>
+</Window>

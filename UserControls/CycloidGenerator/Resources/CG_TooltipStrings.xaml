@@ -1,0 +1,50 @@
+﻿<!--
+// For the record . . .                                                                                                          
+//                                                                                                                               
+// Copyright © 2025 by Laserocitors.                                                                        
+//                                                                                                                               
+// All rights reserved.  No part of this program may be reproduced, stored in a
+// retrieval system or transmitted, in any form or by any means, including but 
+// not limited to electronic, mechanical, photocopying, recording, or otherwise, 
+// without the express prior written consent of Laserocitors afs@laserocitors.com.
+
+-->
+ 
+<!-- These string resources are used to populate ToolTip Text Properties in the 
+     Cycloid Generator Section UserControl.                                     --> 
+ 
+ <ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                     xmlns:system="clr-namespace:System;assembly=mscorlib"
+                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+ <system:String x:Key="CG_ToolTipText_ASLETS">
+  The switch enables/disables the offset modulator mode.
+ </system:String>
+ <system:String x:Key="CG_ToolTipText_ASLLRC">
+  This control sets the offset modulation level.
+ </system:String>
+ <system:String x:Key="CG_ToolTipText_ASLRRC">
+  This control sets the offset modulation rate.
+ </system:String>
+ <system:String x:Key="CG_ToolTipText_AOMS">
+  The controls in this section control the offset modulation of the rolling circle relative to the fixed circle.
+ </system:String>
+ <system:String x:Key="CG_ToolTipText_CGS">
+  The controls in this section affect the Cycloid Generator drawing mode.
+ </system:String> 
+ <system:String x:Key="CG_ToolTipText_FCRRC">
+  This control sets the radius of the fixed circle.
+ </system:String>
+ <system:String x:Key="CG_ToolTipText_OMS">
+  The controls in this section control the offset of the rolling circle relative to the fixed circle.
+ </system:String>
+ <system:String x:Key="CG_ToolTipText_RCRRC">
+  This control sets the radius of the rolling circle.
+ </system:String>
+ <system:String x:Key="CG_ToolTipText_SLRC">
+  This control sets the offset of the rolling circle.
+ </system:String>  
+ <system:String x:Key="CG_ToolTipText_SRRC">
+  This control sets the fixed circle scan rate.
+ </system:String>
+</ResourceDictionary>

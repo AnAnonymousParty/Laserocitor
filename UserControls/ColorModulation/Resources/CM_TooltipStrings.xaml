@@ -1,0 +1,138 @@
+﻿<!--
+// For the record . . .                                                                                                          
+//                                                                                                                               
+// Copyright © 2025 by Laserocitors.                                                                        
+//                                                                                                                               
+// All rights reserved.  No part of this program may be reproduced, stored in a
+// retrieval system or transmitted, in any form or by any means, including but 
+// not limited to electronic, mechanical, photocopying, recording, or otherwise, 
+// without the express prior written consent of Laserocitors afs@laserocitors.com.
+
+-->
+    
+<!-- These string resources are used to populate ToolTip Text Properties in the Color
+     Modulation Section UserControl.                                                  -->
+    
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"                    
+                    xmlns:system="clr-namespace:System;assembly=mscorlib"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <system:String x:Key="CM_ToolTipText_CMB">
+        This button selects the primary Color Modulation Source.
+    </system:String>
+    <system:String x:Key="CM_ToolTipText_CMAMOB">
+        This button selects AM oscillator as the Color Modulation Source.
+    </system:String>
+    <system:String x:Key="CM_ToolTipText_CMGB">
+        This button selects the Baseline Generator rate as the Color Modulation Source.
+    </system:String>
+    <system:String x:Key="CM_ToolTipText_CMRB">
+        This button selects the Radiator oscillator as the Color Modulation Source.
+    </system:String>
+    <system:String x:Key="CM_ToolTipText_CSFCSRB">
+        This button sets the color modulation source to the Cycloid Generator Fixed Circle Scan Rate.
+    </system:String>
+    <system:String x:Key="CM_ToolTipText_CSOMOB">
+        This button sets the color modulation source to the Cycloid Generator Offset Modulation Rate.
+    </system:String>
+    <system:String x:Key="CM_ToolTipText_CMATS">
+        This switch selects between manual color control and automated color modulation.
+    </system:String>
+    <system:String x:Key="CM_ToolTipText_CMS">
+        The controls in this section are used to affect the color of the simulated laser beam in real time.
+    </system:String>
+    <system:String x:Key="CM_ToolTipText_CMBRC">
+        This control sets the level of the blue component of the simulated laser beam..
+    </system:String>    
+    <system:String x:Key="CM_ToolTipText_CMGRC">
+        This control sets the level of the green component of the simulated laser beam.
+    </system:String>    
+    <system:String x:Key="CM_ToolTipText_CMIRC">
+        This control sets the Master Intensity level of the simulated laser beam.
+    </system:String>
+    <system:String x:Key="CM_ToolTipText_CMMS">
+        The controls in this section of for manual control of the color of the simulated laser beam.
+    </system:String>
+    <system:String x:Key="CM_ToolTipText_CMMTS">
+        Selects either the SYNCHRONIZED or UNSYNCHRONIZED Color Modulation mode.
+    </system:String>
+    <system:String x:Key="CM_ToolTipText_CMOARC">
+        Controls the rate of Color Modulation Oscillator A.
+    </system:String>
+    <system:String x:Key="CM_ToolTipText_CMOBRC">
+        Controls the rate of Color Modulation Oscillator B.
+    </system:String>
+    <system:String x:Key="CM_ToolTipText_CMOCRC">
+        Controls the rate of Color Modulation Oscillator C.
+    </system:String>
+    <system:String x:Key="CM_ToolTipText_CMOBAN">
+        Assigns Inverted output from Oscillator A to the Blue intensity input of the RGB laser module.
+    </system:String>
+    <system:String x:Key="CM_ToolTipText_CMOBAP">
+        Assigns Non-inverted output from Oscillator A to the Blue intensity input of the RGB laser module.
+    </system:String>
+    <system:String x:Key="CM_ToolTipText_CMOBBN">
+        Assigns Inverted output from Oscillator B to the Blue intensity input of the RGB laser module.
+    </system:String>
+    <system:String x:Key="CM_ToolTipText_CMOBBP">
+        Assigns Non-inverted output from Oscillator B to the Blue intensity input of the RGB laser module.
+    </system:String>
+    <system:String x:Key="CM_ToolTipText_CMOBCN">
+        Assigns Inverted output from Oscillator C to the Blue intensity input of the RGB laser module.
+    </system:String>
+    <system:String x:Key="CM_ToolTipText_CMOBCP">
+        Assigns Non-inverted output from Oscillator C to the Blue intensity input of the RGB laser module.
+    </system:String>
+    <system:String x:Key="CM_ToolTipText_CMOGAN">
+        Assigns Inverted output from Oscillator A to the Green intensity input of the RGB laser module.
+    </system:String>
+    <system:String x:Key="CM_ToolTipText_CMOGAP">
+        Assigns Non-inverted output from Oscillator A to the Green intensity input of the RGB laser module.
+    </system:String>
+    <system:String x:Key="CM_ToolTipText_CMOGBN">
+        Assigns Inverted output from Oscillator B to the Green intensity input of the RGB laser module.
+    </system:String>
+    <system:String x:Key="CM_ToolTipText_CMOGBP">
+        Assigns Non-inverted output from Oscillator B to the Green intensity input of the RGB laser module.
+    </system:String>
+    <system:String x:Key="CM_ToolTipText_CMOGCN">
+        Assigns Inverted output from Oscillator C to the Green intensity input of the RGB laser module.
+    </system:String>
+    <system:String x:Key="CM_ToolTipText_CMOGCP">
+        Assigns Non-inverted output from Oscillator C to the Green intensity input of the RGB laser module.
+    </system:String>
+    <system:String x:Key="CM_ToolTipText_CMORAN">
+        Assigns Inverted output from Oscillator A to the Red intensity input of the RGB laser module.
+    </system:String>
+    <system:String x:Key="CM_ToolTipText_CMORAP">
+        Assigns Non-inverted output from Oscillator A to the Red intensity input of the RGB laser module.
+    </system:String>
+    <system:String x:Key="CM_ToolTipText_CMORBN">
+        Assigns Inverted output from Oscillator B to the Red intensity input of the RGB laser module.
+    </system:String>
+    <system:String x:Key="CM_ToolTipText_CMORBP">
+        Assigns Non-inverted output from Oscillator B to the Red intensity input of the RGB laser module.
+    </system:String>
+    <system:String x:Key="CM_ToolTipText_CMORCN">
+        Assigns Inverted output from Oscillator C to the Red intensity input of the RGB laser module.
+    </system:String>
+    <system:String x:Key="CM_ToolTipText_CMORCP">
+        Assigns Non-inverted output from Oscillator C to the Red intensity input of the RGB laser module.
+    </system:String>
+    <system:String x:Key="CM_ToolTipText_CMSS">
+        Cycles the simulated laser beam through RGB at an adjustable rate.
+    </system:String>
+    <system:String x:Key="CM_ToolTipText_CMSRC">
+        Adjusts the rate of color cycling.
+    </system:String>
+    <system:String x:Key="CM_ToolTipText_CMRGBRC">
+        This control sets the level of the RGB components of the simulated laser beam in sequence.
+    </system:String>    
+    <system:String x:Key="CM_ToolTipText_CMRRC">
+        This control sets the level of the red component of the simulated laser beam.
+    </system:String>
+    <system:String x:Key="CM_ToolTipText_CMUS">
+        Individually affects each RGB component of the simulated laser at adjustable rates.
+    </system:String>    
+    <system:String x:Key="Tip1">Test</system:String>
+</ResourceDictionary>

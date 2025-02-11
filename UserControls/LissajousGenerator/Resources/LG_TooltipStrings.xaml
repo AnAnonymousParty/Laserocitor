@@ -1,0 +1,83 @@
+﻿<!--
+// For the record . . .                                                                                                          
+//                                                                                                                               
+// Copyright © 2025 by Laserocitors.                                                                        
+//                                                                                                                               
+// All rights reserved.  No part of this program may be reproduced, stored in a
+// retrieval system or transmitted, in any form or by any means, including but 
+// not limited to electronic, mechanical, photocopying, recording, or otherwise, 
+// without the express prior written consent of Laserocitors afs@laserocitors.com.
+
+-->
+    
+<!-- These string resources are used to populate ToolTip Text Properties in the 
+     Lissajous Parameters UserControl.                                             -->
+
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:system="clr-namespace:System;assembly=mscorlib"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+ <system:String x:Key="LG_ToolTipText_BothEnableTS">
+  Disables/Enables modulation of the X nad Y axis oscillators by the X and Y axis modulation oscillators.
+ </system:String>
+ <system:String x:Key="LG_ToolTipText_MainS">
+  The controls in this section control the Lissajous Generator drawing mode.
+ </system:String>
+ <system:String x:Key="LG_ToolTipText_ModS">
+  The controls in this section affect the Amplitude Modulation of the X and Y axis oscillators by the X and Y axis modulation oscillators.
+ </system:String>
+ <system:String x:Key="LG_ToolTipText_XGainRC">
+  Sets the level of modulation of the X-axis oscillator by the X-axis modulation oscillator.
+ </system:String>
+ <system:String x:Key="LG_ToolTipText_XModEnableTS">
+  Disables/Enables modulation of the X-axis oscillator by the X-axis modulation oscillator.
+ </system:String>
+ <system:String x:Key="LG_ToolTipText_XModOscS">
+  The controls in this section affect the X-axis modulation oscillator.
+ </system:String>
+ <system:String x:Key="LG_ToolTipText_XModOscLevelRC">
+  Controls the X-axis modulator oscillator amplitude.
+ </system:String>
+ <system:String x:Key="LG_ToolTipText_XOffsetRC">
+  Sets the offset level of modulation of the X-axis oscillator by the X-axis modulation oscillator.
+ </system:String>
+ <system:String x:Key="LG_ToolTipText_XOscLevelRC">
+  Controls the X-axis oscillator amplitude.
+ </system:String>
+ <system:String x:Key="LG_ToolTipText_XModOscRateRC">
+  Controls the X-axis modulator oscillator amplitude.
+ </system:String>
+ <system:String x:Key="LG_ToolTipText_XOscRateRC">
+  Controls the X-axis oscillator frequency.
+ </system:String>
+ <system:String x:Key="LG_ToolTipText_XOscS">
+  The controls in this section affect the X-axis oscillator.
+ </system:String>
+ <system:String x:Key="LG_ToolTipText_YGainRC">
+  Sets the level of modulation of the Y-axis oscillator byt the Y-axis modulation oscillator.
+ </system:String>
+ <system:String x:Key="LG_ToolTipText_YModEnableTS">
+  Disables/Enables modulation of the Y-axis oscillator by the X-axis modulation oscillator.
+ </system:String>
+ <system:String x:Key="LG_ToolTipText_YModOscS">
+  The controls in this section affect the X-axis modulation oscillator.
+ </system:String>
+ <system:String x:Key="LG_ToolTipText_YModOscLevelRC">
+  Controls the Y-axis modulator oscillator amplitude.
+ </system:String>
+ <system:String x:Key="LG_ToolTipText_YOffsetRC">
+  Sets the offset level of modulation of the Y-axis oscillator by the Y-axis modulation oscillator.
+ </system:String>
+ <system:String x:Key="LG_ToolTipText_YOscLevelRC">
+  Controls the Y-axis oscillator amplitude.
+ </system:String>
+ <system:String x:Key="LG_ToolTipText_YModOscRateRC">
+  Controls the Y-axis modulator oscillator amplitude.
+ </system:String>
+ <system:String x:Key="LG_ToolTipText_YOscRateRC">
+  Controls the Y-axis oscillator frequency.
+ </system:String> 
+ <system:String x:Key="LG_ToolTipText_YOscS">
+  The controls in this section affect the Y-axis oscillator.
+ </system:String>
+</ResourceDictionary>

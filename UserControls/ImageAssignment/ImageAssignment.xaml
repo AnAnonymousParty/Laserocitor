@@ -1,0 +1,100 @@
+﻿<!--
+// For the record . . .                                                                                                          
+//                                                                                                                               
+// Copyright © 2025 by Laserocitors.                                                                        
+//                                                                                                                               
+// All rights reserved.  No part of this program may be reproduced, stored in a
+// retrieval system or transmitted, in any form or by any means, including but 
+// not limited to electronic, mechanical, photocopying, recording, or otherwise, 
+// without the express prior written consent of Laserocitors afs@laserocitors.com.
+
+-->
+
+<!-- This user control provides the controls that select the imaging mode.  -->
+
+<UserControl mc:Ignorable="d" 
+             x:Class="Laserocitor.UserControls.ImageAssignment.ImageAssignment"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <!-- Image Assignment Section primary container. -->
+    <StackPanel DataContext="{Binding RelativeSource={RelativeSource AncestorType=UserControl, Mode=FindAncestor}}"
+                Height="Auto"
+                HorizontalAlignment="Center"
+                Margin="0,1,0,-1" 
+                Orientation="Vertical" 
+                x:Name="ImageAssginmentContainer">
+        <GroupBox Background="Transparent" 
+                  BorderBrush="Cyan"
+                  Foreground="Cyan"
+                  Header="MODE"
+                  Height="130"
+                  HorizontalAlignment="Center"
+                  Margin="0,0,0,0"
+                  Style="{StaticResource GroupBoxStyle1}"
+                  ToolTip="{StaticResource IA_ToolTipText_IAS}"
+                  VerticalAlignment="Top"                  
+                  Width="100"
+                  x:Name="SectionGroupBox">
+
+            <!-- Container for all of the buttons. -->
+            <StackPanel Height="Auto" 
+                        HorizontalAlignment="Center"
+                        Margin="0,5,0,0"
+                        Orientation="Vertical"
+                        Width="Auto">
+                <Button Background="{StaticResource ButtonEnabledOff}"
+                        Click="CycloidBtnClkd"
+                        Height="22"
+                        HorizontalAlignment="Left" 
+                        Margin="0,0,0,2"  
+                        Style="{StaticResource RoundedButtonStyle}"
+                        ToolTip="{StaticResource IA_ToolTipText_CMB}"
+                        VerticalAlignment="Top" 
+                        Width="80"
+                        x:Name="IACycloidBtn">
+                    <TextBlock Text="CYCLOID" Margin="5,2,5,0" />
+                </Button>    
+                <Button Background="{StaticResource ButtonEnabledOff}"
+                        Click="LissajousBtnClkd"  
+                        Height="22" 
+                        HorizontalAlignment="Left" 
+                        Margin="0,0,0,2"        
+                        Style="{StaticResource RoundedButtonStyle}"
+                        ToolTip="{StaticResource IA_ToolTipText_LMB}" 
+                        VerticalAlignment="Top"
+                        Width="80" 
+                        x:Name="IALissajousBtn">
+                    <TextBlock Text="LISSAJOUS" Margin="5,2,5,0" />
+                </Button>
+                <Button Background="{StaticResource ButtonEnabledOff}"                      
+                        Click="RadialScanBtnClkd"    
+                        Height="22"
+                        HorizontalAlignment="Left" 
+                        Margin="0,0,0,2"          
+                        Style="{StaticResource RoundedButtonStyle}"
+                        ToolTip="{StaticResource IA_ToolTipText_RSB}" 
+                        VerticalAlignment="Top" 
+                        Width="80"
+                        x:Name="IARadialScanBtn">
+                    <TextBlock Text="RADIAL" Margin="5,2,5,0" />
+                </Button>
+                <Button Background="{StaticResource ButtonEnabledOff}"                      
+                        Click="SpiralBtnClkd"    
+                        Height="22"
+                        HorizontalAlignment="Left" 
+                        Margin="0,0,0,0"          
+                        Style="{StaticResource RoundedButtonStyle}"
+                        ToolTip="{StaticResource IA_ToolTipText_RSS}" 
+                        VerticalAlignment="Top" 
+                        Width="80"
+                        x:Name="IASpiralBtn">
+                    <TextBlock Text="SPIRAL" Margin="5,2,5,0" />
+                </Button>
+            </StackPanel>
+        </GroupBox>
+    </StackPanel>
+</UserControl>
+

@@ -1,0 +1,38 @@
+﻿<!--
+// For the record . . .                                                                                                          
+//                                                                                                                               
+// Copyright © 2025 by Laserocitors.                                                                        
+//                                                                                                                               
+// All rights reserved.  No part of this program may be reproduced, stored in a
+// retrieval system or transmitted, in any form or by any means, including but 
+// not limited to electronic, mechanical, photocopying, recording, or otherwise, 
+// without the express prior written consent of Laserocitors afs@laserocitors.com.
+
+-->
+     
+<Application x:Class="Laserocitor.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Resources/ControlIcons.xaml" />
+                <ResourceDictionary Source="Resources/GroupBoxStyle.xaml" />
+                <ResourceDictionary Source="Resources/ScrollBarGreenButtonStyle.xaml" />
+                <ResourceDictionary Source="Resources/ScrollBarRedButtonStyle.xaml" />
+                <ResourceDictionary Source="Resources/UIElementStyles.xaml" />
+             
+                <ResourceDictionary Source="UserControls/BeamChopper/Resources/BC_TooltipStrings.xaml" />
+                <ResourceDictionary Source="UserControls/ColorModulation/Resources/CM_TooltipStrings.xaml" />
+                <ResourceDictionary Source="UserControls/CycloidGenerator/Resources/CG_TooltipStrings.xaml" />
+                <ResourceDictionary Source="UserControls/ImageAssignment/Resources/IA_TooltipStrings.xaml" />
+                <ResourceDictionary Source="UserControls/ImageParameters/Resources/IP_TooltipStrings.xaml" />
+                <ResourceDictionary Source="UserControls/LissajousGenerator/Resources/LG_TooltipStrings.xaml" />
+                <ResourceDictionary Source="UserControls/RadialScanGenerator/Resources/RS_TooltipStrings.xaml" />
+                <ResourceDictionary Source="UserControls/ScreenParms/Resources/SP_TooltipStrings.xaml" />
+                <ResourceDictionary Source="UserControls/SpiralGenerator/Resources/SG_TooltipStrings.xaml" />
+                <ResourceDictionary Source="UserControls/WaveformSelector/Resources/WS_TooltipStrings.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

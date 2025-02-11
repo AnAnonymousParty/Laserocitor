@@ -1,0 +1,42 @@
+﻿<!--
+// For the record . . .                                                                                                          
+//                                                                                                                               
+// Copyright © 2025 by Laserocitors.                                                                        
+//                                                                                                                               
+// All rights reserved.  No part of this program may be reproduced, stored in a
+// retrieval system or transmitted, in any form or by any means, including but 
+// not limited to electronic, mechanical, photocopying, recording, or otherwise, 
+// without the express prior written consent of Laserocitors afs@laserocitors.com.
+
+-->
+    
+<!-- These string resources are used to populate ToolTip Text Properties in the 
+     Chopper Section UserControl.                                                  -->    
+    
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:system="clr-namespace:System;assembly=mscorlib">
+
+    <system:String x:Key="BC_ToolTipText_BCBETS">
+        This swtich disables/enables the chopper for the blue channel.
+    </system:String>
+    <system:String x:Key="BC_ToolTipText_BCDCRC">
+        This control sets the chopper duty cycle.
+    </system:String>
+    <system:String x:Key="BC_ToolTipText_BCGB">
+        This controls in the section control the Beam Chopper functions.
+    </system:String>
+    <system:String x:Key="BC_ToolTipText_BCGETS">
+        This swtich disables/enables the chopper for the green channel.
+    </system:String>
+    <system:String x:Key="BC_ToolTipText_BCMETS">
+        This swtich turns the chopper mode off/on.
+    </system:String>
+    <system:String x:Key="BC_ToolTipText_BCRRC">
+        This control sets the chopper frequency.
+    </system:String>    
+    <system:String x:Key="BC_ToolTipText_BCRETS">
+        This swtich disables/enables the chopper for the red channel.
+    </system:String>
+
+</ResourceDictionary>

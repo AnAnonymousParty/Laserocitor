@@ -1,0 +1,101 @@
+﻿<!--
+// For the record . . .                                                                                                          
+//                                                                                                                               
+// Copyright © 2025 by Laserocitors.                                                                        
+//                                                                                                                               
+// All rights reserved.  No part of this program may be reproduced, stored in a
+// retrieval system or transmitted, in any form or by any means, including but 
+// not limited to electronic, mechanical, photocopying, recording, or otherwise, 
+// without the express prior written consent of Laserocitors afs@laserocitors.com.
+
+-->
+ 
+<!-- These string resources are used to populate ToolTip Text Properties in the 
+     Radial Scan Generator Section UserControl.                                     -->
+
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"                    
+                    xmlns:system="clr-namespace:System;assembly=mscorlib"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+ <system:String x:Key="RS_ToolTipText_AMETS">
+  Enables/Disable amplitude modulation of the Radiator signal.
+ </system:String>
+ <system:String x:Key="RS_ToolTipText_AMPTS">
+  Sets the phase (normal/inverted of the Radiator Amplitude Modulation signal.
+ </system:String> 
+ <system:String x:Key="RS_ToolTipText_APDTS">
+  Sets the direction of automatic perspective rotation.
+ </system:String>
+ <system:String x:Key="RS_ToolTipText_APLRC">
+  Set the level of automatic perspective rotation.
+ </system:String>
+ <system:String x:Key="RS_ToolTipText_APRRC">
+  Set the rate of automatic perspective rotation.
+ </system:String> 
+ <system:String x:Key="RS_ToolTipText_APS">
+  The controls in this section control the Perspective Modulation mode.
+ </system:String>
+ <system:String x:Key="RS_ToolTipText_APTS">
+  Disables/Enable automatic perspective rotation.
+ </system:String>
+ <system:String x:Key="RS_ToolTipText_BGDTS">
+  This switch set the the direction of the Baseline Generator.
+ </system:String>
+ <system:String x:Key="RS_ToolTipText_BGFRC">
+  Sets the scan rate of the Baseline Generator.
+ </system:String>
+ <system:String x:Key="RS_ToolTipText_BGLRC">
+  Sets the size of the Baseline Generator.
+ </system:String>
+ <system:String x:Key="RS_ToolTipText_BGPRC">
+  Alters the phase (tilt) of the Baseline Generator.
+ </system:String>
+ <system:String x:Key="RS_ToolTipText_CB">
+  This buttons selects a circle as the Baseline Generator.
+ </system:String>
+<system:String x:Key="RS_ToolTipText_DB">
+  This buttons selects a diamond as the Baseline Generator.
+</system:String>
+<system:String x:Key="RS_ToolTipText_BGS">
+  The controls in this section affect the Baseline Generator, which establishes the basic shape of the image.
+ </system:String>
+ <system:String x:Key="RS_ToolTipText_PJS">
+  Shifts the perspective of the image.
+ </system:String>
+ <system:String x:Key="RS_ToolTipText_PS">
+  The controls in this section modify the viewing perspecitve of the image.
+ </system:String>
+ <system:String x:Key="RS_ToolTipText_RAMFRC">
+  Set the frequency of the Radiator AM signal.
+ </system:String> 
+ <system:String x:Key="RS_ToolTipText_RAMLRC">
+  Set the level of the Radiator AM signal.
+ </system:String>
+ <system:String x:Key="RS_ToolTipText_RAMS">
+  The controls in this section control the Amplitude Modulation of the Radiator signal.
+ </system:String>
+ <system:String x:Key="RS_ToolTipText_RDCRC">
+  Sets the duty cycle of the Radiator square wave signal.
+ </system:String>
+ <system:String x:Key="RS_ToolTipText_RLRC">
+  Set the level of the Radiator signal.
+ </system:String>
+ <system:String x:Key="RS_ToolTipText_RGRC">
+  Controls the amount of Radiator signal applied to the Baseline Gemerator signal.
+ </system:String> 
+ <system:String x:Key="RS_ToolTipText_RFRC">
+  Set the frequency of the Radiator signal.
+ </system:String>
+ <system:String x:Key="RS_ToolTipText_RORC">
+  Controls the amount of offset the in the Radiator signal applied to the Baseline Gemerator signal.
+ </system:String>
+ <system:String x:Key="RS_ToolTipText_RS">
+  The controls in this section control the Radiator Oscillator, whose output 'rides' along the Baseline Generator waveform.
+ </system:String>
+ <system:String x:Key="RS_ToolTipText_RSS">
+  The controls in this section affect the Radial Scan Generator drawing mode.
+ </system:String>
+ <system:String x:Key="RS_ToolTipText_TB">
+  This buttons selects a triangle as the Baseline Generator.
+ </system:String>
+</ResourceDictionary>

@@ -1,0 +1,234 @@
+﻿<!--
+// For the record . . .                                                                                                          
+//                                                                                                                               
+// Copyright © 2025 by Laserocitors.                                                                        
+//                                                                                                                               
+// All rights reserved.  No part of this program may be reproduced, stored in a
+// retrieval system or transmitted, in any form or by any means, including but 
+// not limited to electronic, mechanical, photocopying, recording, or otherwise, 
+// without the express prior written consent of Laserocitors afs@laserocitors.com.
+
+-->
+    
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <!-- The ScrollBar is basically a grid with three components (Parts):  -->
+
+    <!-- ScrollBar components of the ScrollViewer:
+                                                               Vertical Scroll Bar
+                                                               |
+                                                               v
+                             +================================+=+
+                             |                                |v| <- Down Button
+                             |                                +=+    x:Key="LineButtonUpStyle"
+                             |                                | |
+                             |                                | |   
+                             |                                | |
+                             |                                | |
+                             |                                +=+
+                             |         Scrollable Area        | |
+                             |                                | | <- Vertical ThumbWheel, a.k.a 'Slider'
+                             |                                +=+    x:Key="VerticalScrollBarThumbStyle"
+                             |                                | |
+                             |                                | |
+                             |                                | |
+                             |                                | |   
+                             |                                +=+
+                             |                                |^| <- Up Button
+                             +=+==========+====+============+=+=+    x:Key="LineButtonDownStyle"
+     Horizontal Scrollbar -> |>|          |    |            |<| |
+                             +=+==========+====+============+=+=+
+                              ^              ^               ^   \
+                              |              |               |    Weird Corner Thing
+                              Right Button   |               |
+               x:Key="LineButtonLeftStyle"   |               Left Button x:Key="LineButtonRightStyle"
+                                             |
+                                             Horizontal ThumbWheel
+                                             x:Key="HorizontalScrollBarThumbStyle"
+    -->
+
+    <!-- The Track contains the 'Thumb', the movable slider.               -->
+    <!-- The Page Buttons are clickable elements at each end of the Track. -->
+    
+    <!-- Sets the colors for the various components of the Scroll Bar -->
+    <SolidColorBrush x:Key="ButtonFgBrush" Color="Red" />
+    <SolidColorBrush x:Key="ThumbFgBrush" Color="Red" />
+
+    <LinearGradientBrush x:Key="NormalBrush" StartPoint="0,0" EndPoint="0,1">
+        <GradientBrush.GradientStops>
+            <GradientStopCollection>
+                <GradientStop Color="#FFF" Offset="0.0"/>
+                <GradientStop Color="#CCC" Offset="1.0"/>
+            </GradientStopCollection>
+        </GradientBrush.GradientStops>
+    </LinearGradientBrush>
+    <LinearGradientBrush x:Key="NormalBorderBrush" StartPoint="0,0" EndPoint="0,1">
+        <GradientBrush.GradientStops>
+            <GradientStopCollection>
+                <GradientStop Color="#CCC" Offset="0.0"/>
+                <GradientStop Color="#444" Offset="1.0"/>
+            </GradientStopCollection>
+        </GradientBrush.GradientStops>
+    </LinearGradientBrush>
+    <LinearGradientBrush x:Key="ScrollBarNormalBrush" StartPoint="0,0" EndPoint="1,0">
+        <GradientBrush.GradientStops>
+            <GradientStopCollection>
+                <GradientStop Color="#FFF" Offset="0.0"/>
+                <GradientStop Color="#CCC" Offset="1.0"/>
+            </GradientStopCollection>
+        </GradientBrush.GradientStops>
+    </LinearGradientBrush>
+    <LinearGradientBrush x:Key="ScrollBarBorderBrush" StartPoint="0,0" EndPoint="1,0">
+        <GradientBrush.GradientStops>
+            <GradientStopCollection>
+                <GradientStop Color="#CCC" Offset="0.0"/>
+                <GradientStop Color="#444" Offset="1.0"/>
+            </GradientStopCollection>
+        </GradientBrush.GradientStops>
+    </LinearGradientBrush>
+
+    <!-- The style for the Thumb (slider). -->
+    <Style x:Key="ScrollBarThumb" TargetType="{x:Type Thumb}">
+        <Setter Property="Foreground" Value="{StaticResource ThumbFgBrush}" />
+        <Setter Property="SnapsToDevicePixels" Value="True"/>
+        <Setter Property="OverridesDefaultStyle" Value="true"/>
+        <Setter Property="IsTabStop" Value="false"/>
+        <Setter Property="Focusable" Value="false"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Thumb}">
+                    <Border CornerRadius="3"
+                        Background="{TemplateBinding Foreground}" 
+                        BorderBrush="#000000"
+                        BorderThickness="3,2,3,2" />
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- The style for the areas within the track on either side of the slider that apply -->
+    <!-- to the Page Left/Right 'button'.                                                 -->
+    <Style x:Key="ScrollBarPageButton" TargetType="{x:Type RepeatButton}">
+        <Setter Property="SnapsToDevicePixels" Value="True"/>
+        <Setter Property="OverridesDefaultStyle" Value="true"/>
+        <Setter Property="IsTabStop" Value="false"/>
+        <Setter Property="Focusable" Value="false"/>
+        <Setter Property="Height" Value="3"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type RepeatButton}">
+                    <Border BorderBrush="#101010" BorderThickness="0,0,0,1" Background="Black" />
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- The style for the buttons on each side of the Track. -->
+    <Style x:Key="ScrollBarButton" TargetType="{x:Type RepeatButton}">
+        <Setter Property="Panel.ZIndex" Value="1" />
+        <Setter Property="Foreground" Value="Red" />
+        <Setter Property="SnapsToDevicePixels" Value="True"/>
+        <Setter Property="OverridesDefaultStyle" Value="true"/>
+        <Setter Property="Focusable" Value="false"/>
+        <Setter Property="Width" Value="10" />
+        <Setter Property="Height" Value="10" />
+        <Setter Property="Opacity" Value="100" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type RepeatButton}">
+                    <Border
+                       Name="Border" 
+                       CornerRadius="5"
+                       Background="Black"
+                       BorderBrush="Black"
+                       BorderThickness="1">
+                       <Path
+                         HorizontalAlignment="Center"
+                         VerticalAlignment="Center"
+                         Fill="{StaticResource ButtonFgBrush}"
+                         Stroke="{StaticResource ButtonFgBrush}"                            
+                         Data="{Binding Path=Content, RelativeSource={RelativeSource TemplatedParent}}" />
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsPressed" Value="true">
+                            <Setter TargetName="Border" Property="Margin" Value="-1" />
+                            <Setter TargetName="Border" Property="Panel.ZIndex" Value="99999" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- The Control Template that pulls alls the pieces together. -->
+    <ControlTemplate x:Key="HorizontalScrollBar" TargetType="{x:Type ScrollBar}">
+        <Grid Height="20">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition MaxWidth="20"/>
+                <ColumnDefinition Width="0.00001*"/>
+                <ColumnDefinition MaxWidth="20"/>                
+            </Grid.ColumnDefinitions>
+            <Border 
+                BorderBrush="#10107F"
+                BorderThickness="1,1,1,1"
+                CornerRadius="4"
+                Background="Transparent" 
+                Grid.Row="0">
+                <RepeatButton
+                   Style="{StaticResource ScrollBarButton}"
+                   Height="15"
+                   Width="15"
+                   Command="ScrollBar.LineLeftCommand"
+                   Content="M 4 0 L 4 8 L 0 4 Z" />
+            </Border>                
+            <Track Name="PART_Track"
+                Grid.Column="1"
+                IsDirectionReversed="False">
+                <Track.DecreaseRepeatButton>
+                    <RepeatButton Style="{StaticResource ScrollBarPageButton}"
+                              Command="ScrollBar.PageLeftCommand" />
+                </Track.DecreaseRepeatButton>
+                <Track.Thumb>
+                    <Thumb Style="{StaticResource ScrollBarThumb}"
+                        Margin="0,1,0,1"
+                        Background="{StaticResource NormalBrush}"
+                        BorderBrush="{StaticResource NormalBorderBrush}" />
+                </Track.Thumb>
+                <Track.IncreaseRepeatButton>
+                    <RepeatButton Style="{StaticResource ScrollBarPageButton}"
+                              Command="ScrollBar.PageRightCommand" />
+                </Track.IncreaseRepeatButton>
+            </Track>
+            <Border 
+                BorderBrush="#10107F"
+                BorderThickness="1,1,1,1"
+                CornerRadius="4"
+                Grid.Column="2"
+                Background="Transparent" >
+                <RepeatButton
+                   Style="{StaticResource ScrollBarButton}"
+                   Height="15"
+                   Width="15"
+                   Command="ScrollBar.LineRightCommand"
+                   Content="M 4 0 L 4 8 L 8 4 Z" />
+            </Border>
+        </Grid>
+    </ControlTemplate>
+
+    <!-- This is the actual style definition that gets referenced for the instance of a control. -->
+    <Style x:Key="ScrollBarRedButton" TargetType="{x:Type ScrollBar}">
+        <Setter Property="SnapsToDevicePixels" Value="True"/>
+        <Setter Property="OverridesDefaultStyle" Value="True"/>
+        <Setter Property="Foreground" Value="White"/>
+        <Style.Triggers>
+            <Trigger Property="Orientation" Value="Horizontal">
+                <Setter Property="Foreground" Value="White" />
+                <Setter Property="Width"  Value="Auto"/>
+                <Setter Property="Height" Value="20" />
+                <Setter Property="Template" Value="{StaticResource HorizontalScrollBar}" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+</ResourceDictionary>
