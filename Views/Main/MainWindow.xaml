@@ -7,7 +7,6 @@
 // retrieval system or transmitted, in any form or by any means, including but 
 // not limited to electronic, mechanical, photocopying, recording, or otherwise, 
 // without the express prior written consent of Laserocitors afs@laserocitors.com.
-
 -->
 
 <!-- Laserocitor Main Screen, a collection of user sontrols bound to the Laserocitor
@@ -131,6 +130,11 @@
                           Command="{Binding ShowDetailsCommand}" 
                           Foreground="AliceBlue"
                           Header="_View Data" />
+                <MenuItem Background="{StaticResource SubSubSectionBackground}"
+                          BorderBrush="DarkCyan"
+                          Command="{Binding ToggleAudioCommand}" 
+                          Foreground="AliceBlue"
+                          Header="_Toggle Audio Output" />
             </MenuItem>
         </Menu>
 

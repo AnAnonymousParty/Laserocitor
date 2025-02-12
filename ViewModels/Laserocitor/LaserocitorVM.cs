@@ -6,7 +6,6 @@
 // retrieval system or transmitted, in any form or by any means, including but 
 // not limited to electronic, mechanical, photocopying, recording, or otherwise, 
 // without the express prior written consent of Laserocitors afs@laserocitors.com.
- 
 
 using System;
 using System.ComponentModel;
@@ -23,8 +22,6 @@ using Laserocitor.ViewModels.Base;
 using Laserocitor.Views.DisplayScreen;
 using Laserocitor.Views.Monitor;
 
-using NAudio.Wave;
-
 namespace Laserocitor.ViewModels.Laserocitor
 {
     /// <summary>
@@ -37,14 +34,15 @@ namespace Laserocitor.ViewModels.Laserocitor
     {
         #region Private internal variables
 
-        private bool bBlanked,             // true = 'display blanked' (current drawing color = current background color).
+        private bool bAudioEnabled,        // true = Enable Audio output.
+                     bBlanked,             // true = 'display blanked' (current drawing color = current background color).
                      bOK2CloseDispWindow;  // true = Display window can be closed (need to figure out how to remove close buttons).                    
 
         private DataMonitor monitorWindow;  // The raw data display window.
 
         private DisplayWindow displayWindow;  // The detached display window.
 
-        private CircularQueue<AudioSample> sampleQueue;
+        private CircularQueue<AudioSample> sampleQueue;  // Circular queue of audio samples derived from the image points.
 
         private double dColorModOscVal,    // Current color modulation oscillator value (0 - 1535).
                        dColorModOscAVal,   // Current color modulation oscillator A value.
@@ -84,10 +82,10 @@ namespace Laserocitor.ViewModels.Laserocitor
                     iCurX,           // Current computed X display point.
                     iCurY,           // Current computed Y display point.
                     iQOsc1Rate,      // Quadrature Oscillator (1) Rate (frequency) value.
-                    iMaxX,
-                    iMaxY,
-                    iMinX,
-                    iMinY,
+                    iMaxX,           // Maximum X value of image.
+                    iMaxY,           // Maximum Y value of image.
+                    iMinX,           // Minimum X value of image.
+                    iMinY,           // Minimum Y value of image.
                     iSPQOscRate;     // Spiral base circle quadrature oscillator rate (frequency) value.
 
         private Waveforms waveforms;  // Handle to Waveform Generators.
@@ -235,6 +233,7 @@ namespace Laserocitor.ViewModels.Laserocitor
         public RelayCommand ResetCommand       { get; set; }
         public RelayCommand SaveCommand        { get; set; }
         public RelayCommand ShowDetailsCommand { get; set; }
+        public RelayCommand ToggleAudioCommand { get; set; }
 
         #endregion
 
@@ -457,11 +456,12 @@ namespace Laserocitor.ViewModels.Laserocitor
         }
 
         /// <summary>
-        /// Initialize the View Model from a Model.
+        /// Apply values from a Model to the View Model.
         /// </summary>
         /// <param name="objLaserocitorModel">LaserocitorModel containing the properties to be applied.</param>
         private void Init(LaserocitorModel objLaserocitorModel)
         {
+            bAudioEnabled       = false;
             bOK2CloseDispWindow = false;
 
             sampleQueue = new CircularQueue<AudioSample>(2048, false);
@@ -478,6 +478,7 @@ namespace Laserocitor.ViewModels.Laserocitor
             ResetCommand       = new RelayCommand(param => OnResetCommand());
             SaveCommand        = new RelayCommand(param => OnSaveCommand());
             ShowDetailsCommand = new RelayCommand(param => OnShowDetailsCommand());
+            ToggleAudioCommand = new RelayCommand(param => OnToggleAudioCommand());
 
             // Initialize the WriteableBitmap and open the
             // simulated laser display window: 
@@ -556,6 +557,23 @@ namespace Laserocitor.ViewModels.Laserocitor
         private void OnSaveCommand()
         {
             Utils.Persistence.DataRepository.GetInstance().SaveModel(new LaserocitorModel(this), displayWindow);
+        }
+
+        /// <summary>
+        /// User selected the Toggle Audio Output option, so turn audio off/on.
+        /// </summary>
+        private void OnToggleAudioCommand()
+        {
+            if (false == bAudioEnabled)
+            {
+                if (MessageBoxResult.OK != CommonUtils.ShowPrompt("Enable Audio Output",
+                                                                  "Check volume level before enabling audio."))
+                {
+                    return;
+                }
+            }
+
+            bAudioEnabled = !bAudioEnabled;
         }
 
         /// <summary>
@@ -1111,6 +1129,13 @@ namespace Laserocitor.ViewModels.Laserocitor
                 iCurY = iMaxY + 1;
             }
 
+            dChopOscVal += iChopOscFrequency / 1000.0;
+
+            if (false == bAudioEnabled)
+            {
+                return;  // Shhh...
+            }
+
             int baseOffsetX = UInt16.MaxValue / 2 - iBitmapCenterX;
             int baseOffsetY = UInt16.MaxValue / 2 - iBitmapCenterY;
 
@@ -1122,7 +1147,7 @@ namespace Laserocitor.ViewModels.Laserocitor
                 }
                 else
                 {
-                   sampleQueue.ClearQueue();
+                    sampleQueue.ClearQueue();
                 }
             }
             catch (InvalidOperationException ex)
@@ -1130,12 +1155,10 @@ namespace Laserocitor.ViewModels.Laserocitor
                 // ReSharper disable once PossibleNullReferenceException
                 Logger.GetInstance().Log(new LogMessage(LogMessage.Severity.eWarning,
                                                         LogMessage.LogMessageType.eException,
-                                                        GetType().FullName, 
+                                                        GetType().FullName,
                                                         System.Reflection.MethodBase.GetCurrentMethod().Name,
                                                         ex.ToString()));
             }
-
-            dChopOscVal += iChopOscFrequency / 1000.0;
         }
 
         /// <summary>

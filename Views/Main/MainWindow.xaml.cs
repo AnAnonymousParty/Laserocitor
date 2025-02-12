@@ -7,8 +7,6 @@
 // not limited to electronic, mechanical, photocopying, recording, or otherwise, 
 // without the express prior written consent of Laserocitors afs@laserocitors.com.
 
-
-
 using Laserocitor.Models;
 using Laserocitor.ViewModels.Laserocitor;
 
