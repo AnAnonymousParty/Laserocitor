@@ -2,7 +2,7 @@ The Laserocitor is a WPF C# application that simulates the operation of
 an analog laser image synthesizer.
 
 It provides multiple modes of operation and an extensive set of controls 
-to modufy the image rendering in real time. 
+to modify the image rendering in real time. 
 
 See ScreenShot.jpg for an image of the running application.
 
