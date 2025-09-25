@@ -13,6 +13,7 @@
 <Window Background="Black"
         Height="500"
         Icon="/Laserocitor;component/Resources/laser.ico"
+        Loaded="WindowLoaded"
         Title="Display Screen"  
         Width="500"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"

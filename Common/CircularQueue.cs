@@ -20,7 +20,7 @@ namespace Laserocitor.Common
     {
         private readonly T[] circularQueue;  // The buffer.
 
-        private bool overflowable;  // true == allow overflow by overwriting the last value. false = trigger exception on buffer full.
+        private bool overflowable;  // true = allow overflow by overwriting the last value. false = trigger exception on buffer full.
 
         private int queueInNdx;   // Index of next available queue slot to add an element.
         private int queueOutNdx;  // Index of next available queue slot to get an element.

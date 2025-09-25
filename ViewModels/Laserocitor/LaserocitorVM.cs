@@ -36,7 +36,7 @@ namespace Laserocitor.ViewModels.Laserocitor
 
         private bool bAudioEnabled,        // true = Enable Audio output.
                      bBlanked,             // true = 'display blanked' (current drawing color = current background color).
-                     bOK2CloseDispWindow;  // true = Display window can be closed (need to figure out how to remove close buttons).                    
+                     bOK2CloseDispWindow;  // true = Display window can be closed.                    
 
         private DataMonitor monitorWindow;  // The raw data display window.
 
